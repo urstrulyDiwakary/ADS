@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Us - Ananta Digi Service - Get in touch with our team.">
+    <meta name="keywords" content="web development, app development, digital marketing, SEO, hosting, social media management">
+    <meta name="author" content="Ananta Digi Service">
+    <title>Contact Us - Ananta Digi Service</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ads.png">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Theme Colors */
+        :root {
+            --primary-color: #6A0DAD;
+            --secondary-color: #1E90FF;
+            --accent-color: #FF6B35;
+            --dark-color: #2C3E50;
+            --light-color: #F8F9FA;
+            --text-color: #333;
+            --bg-color: #fff;
+        }
+
+        body.dark-mode {
+            --primary-color: #9B59B6;
+            --secondary-color: #3498DB;
+            --accent-color: #E67E22;
+            --dark-color: #E0E0E0;
+            --light-color: #2C3E50;
+            --text-color: #F8F9FA;
+            --bg-color: #1a1a1a;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #1A237E;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1030;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 30px;
+            margin-right: 10px;
+            display: inline;
+        }
+
+        .navbar-brand .brand-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .explore-icon {
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 15px;
+            display: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #mobile-theme-toggle {
+            display: none;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transition: padding 0.3s ease-in-out;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff, #f1f1f1);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1050;
+            padding-top: 20px;
+        }
+
+        body.dark-mode .sidebar {
+            background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.dark-mode .sidebar-header {
+            border-bottom: 1px solid #444;
+        }
+
+        .brand-name-sidebar {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+        }
+
+        .sidebar a {
+            color: var(--text-color);
+            padding: 15px 25px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        body.dark-mode .sidebar a {
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar a:hover {
+            background: rgba(106, 13, 173, 0.05);
+            padding-left: 30px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Bottom Navigation Styles */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: rgba(20, 28, 70, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+
+        body.dark-mode .bottom-nav {
+            background: rgba(10, 10, 20, 0.7);
+        }
+
+        .bottom-nav .nav-link {
+            color: orange;
+            text-align: center;
+            padding: 0;
+            flex: 1;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .bottom-nav .nav-link .icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 2px;
+            border-radius: 50%;
+        }
+
+        .bottom-nav .nav-link i {
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            z-index: 2;
+            color: white;
+        }
+
+        .bottom-nav .nav-link.active .icon-wrapper {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #0052d4, #4364f7, #6fb1fc);
+            box-shadow: 0 0 20px 4px rgba(100, 150, 250, 0.6), 0 0 8px rgba(252, 246, 186, 0.5);
+        }
+
+        .bottom-nav .nav-link.active i {
+            color: white;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="50" fill="rgba(255,255,255,0.05)"/><circle cx="900" cy="400" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="1100" cy="150" r="60" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* Contact Page Styles */
+        .contact-form {
+            background: var(--bg-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .contact-form {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .form-control {
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.dark-mode .form-control {
+            border-color: #444;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(106,13,173,0.15);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .form-label {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            height: 100%;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        body.dark-mode .map-container {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary-custom {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: #E55A2B;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,53,0.3);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1DA851;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .explore-icon {
+                display: block;
+            }
+            #mobile-theme-toggle {
+                display: flex;
+            }
+            .navbar-collapse {
+                display: none !important;
+            }
+            .bottom-nav {
+                display: flex;
+            }
+            .footer {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            #desktop-theme-toggle .theme-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0 60px;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .sidebar {
+                width: 250px;
+                left: -250px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                height: 28px;
+                margin-right: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <div class="navbar-left">
+            <a id="explore-icon" class="explore-icon">
+                <i class="bi bi-list"></i>
+            </a>
+            <a class="navbar-brand" href="home.html">
+                <img src="images/ads.png" alt="Ananta Digi Service Logo" class="brand-logo">
+                <span class="brand-name">Ananta Digi Service</span>
+            </a>
+        </div>
+
+        <div id="mobile-theme-toggle" class="theme-toggle">
+            <i class="bi bi-sun-fill"></i>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item" id="desktop-theme-toggle">
+                    <a class="theme-toggle nav-link">
+                        <i class="bi bi-sun-fill"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <span class="brand-name-sidebar">Ananta Digi Service</span>
+    </div>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+</div>
+<div class="sidebar-overlay"></div>
+
+<main class="main-content">
+    <!-- Contact Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 style="color: white;">Contact Us</h1>
+                <p>Get in touch with our team - we'd love to hear from you</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <h3 class="mb-4" style="color: var(--primary-color);">Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Full Name *</label>
+                                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" name="email" class="form-control" placeholder="john@example.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number *</label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+91 7659872496" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Service Interested In</label>
+                                    <select name="service" class="form-control">
+                                        <option>Select a service</option>
+                                        <option>Web Development</option>
+                                        <option>App Development</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Social Media Management</option>
+                                        <option>Video Production</option>
+                                        <option>Graphic Design</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Your Message *</label>
+                                    <textarea name="message" class="form-control" rows="6" placeholder="Tell us about your project..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary-custom">
+                                        Send Message <i class="bi bi-send"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>Have a question or want to work together? We'd love to hear from you.</p>
+
+                        <div class="contact-item">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <div>
+                                <strong>Address</strong><br>
+                                ANANTAPUR, INDIA
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="bi bi-telephone-fill"></i>
+                            <div>
+                                <strong>Phone</strong><br>
+                                +91 7659872496
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="bi bi-envelope-fill"></i>
+                            <div>
+                                <strong>Email</strong><br>
+                                ANANTADIGISERVICE@GMAIL.COM
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="bi bi-clock-fill"></i>
+                            <div>
+                                <strong>Working Hours</strong><br>
+                                Mon - Sat: 9:00 AM - 6:00 PM
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button class="btn btn-whatsapp w-100 mb-2" onclick="window.open('https://wa.me/917659872496', '_blank')">
+                                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+                            </button>
+                            <button class="btn btn-primary-custom w-100" onclick="window.location.href='tel:+917659872496'">
+                                <i class="bi bi-telephone-fill"></i> Call Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6432234!2d78.486671!3d17.385044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDIzJzA2LjIiTiA3OMKwMjknMTIuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                        width="100%"
+                        height="400"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>About Ananta Digi Service</h5>
+                    <p>We are your complete digital and development partner, offering comprehensive solutions for web development, app development, digital marketing, and creative services.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy & Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">App Development</a></li>
+                        <li><a href="services.html">Digital Marketing</a></li>
+                        <li><a href="services.html">Social Media</a></li>
+                        <li><a href="services.html">Video Production</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul>
+                        <li><i class="bi bi-geo-alt-fill"></i> ANANTAPUR, INDIA</li>
+                        <li><i class="bi bi-telephone-fill"></i> +91 7659872496</li>
+                        <li><i class="bi bi-envelope-fill"></i> ANANTADIGISERVICE@GMAIL.COM</li>
+                        <li><i class="bi bi-clock-fill"></i> Mon - Sat: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ananta Digi Service. All rights reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i></p>
+            </div>
+        </div>
+    </footer>
+</main>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="home.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-house-door-fill"></i>
+        </span>
+        Home
+    </a>
+    <a href="services.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-hdd-stack-fill"></i>
+        </span>
+        Services
+    </a>
+    <a href="portfolio.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-briefcase-fill"></i>
+        </span>
+        Portfolio
+    </a>
+    <a href="contact.html" class="nav-link active">
+        <span class="icon-wrapper">
+            <i class="bi bi-envelope-fill"></i>
+        </span>
+        Contact
+    </a>
+    <a href="about.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-person-circle"></i>
+        </span>
+        About
+    </a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Adjust content padding for fixed header and bottom nav
+        function adjustContentPadding() {
+            const navbar = document.querySelector('.navbar');
+            const bottomNav = document.querySelector('.bottom-nav');
+            const mainContent = document.querySelector('.main-content');
+
+            if (navbar && mainContent) {
+                const navbarHeight = navbar.offsetHeight;
+                mainContent.style.paddingTop = `${navbarHeight}px`;
+            }
+
+            if (bottomNav && mainContent) {
+                const bottomNavStyles = window.getComputedStyle(bottomNav);
+                if (bottomNavStyles.display !== 'none') {
+                    const bottomNavHeight = bottomNav.offsetHeight;
+                    mainContent.style.paddingBottom = `${bottomNavHeight}px`;
+                } else {
+                    mainContent.style.paddingBottom = '0px';
+                }
+            }
+        }
+
+        adjustContentPadding();
+        window.addEventListener('resize', adjustContentPadding);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Bottom navigation click handling
+        const bottomNavLinks = document.querySelectorAll('.bottom-nav .nav-link');
+        bottomNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                bottomNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Sidebar toggle
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const exploreIcon = document.getElementById('explore-icon');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+            setTimeout(adjustContentPadding, 400);
+        }
+
+        exploreIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            toggleSidebar();
+        });
+
+        // Theme toggle
+        const desktopToggle = document.getElementById('desktop-theme-toggle');
+        const mobileToggle = document.getElementById('mobile-theme-toggle');
+        const body = document.body;
+
+        function setIcons() {
+            const isDarkMode = body.classList.contains('dark-mode');
+            const desktopIcon = desktopToggle.querySelector('i');
+            const mobileIcon = mobileToggle.querySelector('i');
+
+            if (isDarkMode) {
+                desktopIcon.classList.remove('bi-sun-fill');
+                desktopIcon.classList.add('bi-moon-fill');
+                mobileIcon.classList.remove('bi-sun-fill');
+                mobileIcon.classList.add('bi-moon-fill');
+            } else {
+                desktopIcon.classList.remove('bi-moon-fill');
+                desktopIcon.classList.add('bi-sun-fill');
+                mobileIcon.classList.remove('bi-moon-fill');
+                mobileIcon.classList.add('bi-sun-fill');
+            }
+        }
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+            setIcons();
+        }
+
+        // Check saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        setIcons();
+
+        desktopToggle.addEventListener('click', toggleTheme);
+        mobileToggle.addEventListener('click', toggleTheme);
+
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch('/submit-contact', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    form.reset();
+                } else {
+                    alert('Sorry, there was an error. Please try again.');
+                }
+            })
+            .catch(() => {
+                alert('Sorry, there was an error. Please try again.');
+            });
+        });
+    });
+</script>
+</body>
+</html>
+

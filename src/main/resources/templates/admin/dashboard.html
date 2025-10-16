@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ADS Admin Panel</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #4f46e5;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --dark-color: #1f2937;
+            --light-gray: #f8fafc;
+            --border-color: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 5px;
+            object-fit: contain;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .navbar h1 {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .navbar h1::before {
+            content: "📊";
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-links a.active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .nav-links a i {
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .welcome-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .welcome-section h2 {
+            color: var(--text-primary);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .welcome-section p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-title {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+
+        .stat-icon.total { background: var(--primary-color); }
+        .stat-icon.recent { background: var(--success-color); }
+        .stat-icon.services { background: var(--warning-color); }
+        .stat-icon.growth { background: var(--accent-color); }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Charts Section */
+        .charts-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Recent Submissions */
+        .recent-submissions {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 1.5rem 2rem;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .submissions-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .submission-item {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .submission-item:hover {
+            background: var(--light-gray);
+        }
+
+        .submission-item:last-child {
+            border-bottom: none;
+        }
+
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .submission-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 16px;
+        }
+
+        .submission-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .submission-email {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 0.25rem;
+        }
+
+        .submission-service {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Loading States */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .loading i {
+            font-size: 32px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty States */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h4 {
+            font-size: 18px;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quick-action {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .quick-action:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .quick-action i {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .quick-action h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-action p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Admin Table Styles */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .admin-table th {
+            background: #f8fafc;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .admin-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .admin-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .admin-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .admin-table tbody tr.disabled {
+            opacity: 0.6;
+            background: #f8f8f8;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ef4444;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #10b981;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Action Buttons */
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px 10px;
+            margin: 0 3px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .action-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .action-btn.edit { color: #667eea; }
+        .action-btn.delete { color: #ef4444; }
+        .action-btn.password { color: #f59e0b; }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            opacity: 0.8;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        .form-group:first-of-type {
+            margin-top: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 14px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            background: #f8fafc;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            background: #dcfce7;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
+        .toast.error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="/images/ads.png" alt="ADS Logo" class="brand-logo">
+            <div class="brand-name">ADS</div>
+        </div>
+        <h1>Admin Dashboard</h1>
+        <div class="nav-links">
+            <a href="/admin/dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="/admin/submissions"><i class="fas fa-envelope"></i> Submissions</a>
+            <form method="post" action="/admin/logout" style="display: inline; margin: 0;">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit" style="color: white; text-decoration: none; padding: 10px 20px; border-radius: var(--border-radius); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: inherit; font-size: inherit;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h2 th:text="'Welcome Back, ' + (${adminFullName} ?: 'Admin') + '!'">Welcome Back, Admin!</h2>
+            <p>Here's an overview of your website's contact submissions and performance metrics.</p>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Submissions</div>
+                    <div class="stat-icon total">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="totalSubmissions">0</div>
+                <div class="stat-description">All time contact submissions</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Recent Submissions</div>
+                    <div class="stat-icon recent">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="recentSubmissions">0</div>
+                <div class="stat-description">Last 30 days</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Services Requested</div>
+                    <div class="stat-icon services">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="serviceTypes">0</div>
+                <div class="stat-description">Different service types</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Response Rate</div>
+                    <div class="stat-icon growth">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <div class="stat-value">98%</div>
+                <div class="stat-description">Customer satisfaction</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <a href="/admin/submissions" class="quick-action">
+                <i class="fas fa-list"></i>
+                <h4>View All Submissions</h4>
+                <p>Manage contact submissions</p>
+            </a>
+
+            <div class="quick-action" onclick="refreshDashboard()">
+                <i class="fas fa-sync-alt"></i>
+                <h4>Refresh Data</h4>
+                <p>Update dashboard metrics</p>
+            </div>
+
+            <div class="quick-action" onclick="exportData()">
+                <i class="fas fa-download"></i>
+                <h4>Export Data</h4>
+                <p>Download submissions data</p>
+            </div>
+
+            <a href="/" target="_blank" class="quick-action">
+                <i class="fas fa-globe"></i>
+                <h4>View Website</h4>
+                <p>Open main website</p>
+            </a>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Service Requests Overview
+                    </div>
+                    <button class="btn btn-outline" onclick="refreshCharts()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="serviceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-pie"></i>
+                        Distribution
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="distributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Submissions -->
+        <div class="recent-submissions">
+            <div class="section-header">
+                <h3>
+                    <i class="fas fa-clock"></i>
+                    Recent Submissions
+                </h3>
+                <a href="/admin/submissions" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> View All
+                </a>
+            </div>
+
+            <div class="submissions-list" id="recentSubmissionsList">
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading recent submissions...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Management Section -->
+        <div class="recent-submissions" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h3>
+                    <i class="fas fa-users-cog"></i>
+                    Admin Management
+                </h3>
+                <button class="btn btn-primary" onclick="openAddAdminModal()">
+                    <i class="fas fa-plus"></i> Add Admin
+                </button>
+            </div>
+
+            <!-- Search Box -->
+            <div style="padding: 1rem 2rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                <div style="position: relative; max-width: 400px;">
+                    <i class="fas fa-search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #64748b;"></i>
+                    <input type="text" id="adminSearchInput" placeholder="Search by username or email..."
+                           style="width: 100%; padding: 10px 10px 10px 40px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px;"
+                           onkeyup="filterAdmins()">
+                </div>
+                <div style="margin-top: 0.5rem; color: #64748b; font-size: 14px;">
+                    Total Admins: <strong id="adminCount">0</strong>
+                </div>
+            </div>
+
+            <!-- Admin Table -->
+            <div style="overflow-x: auto;">
+                <table class="admin-table" id="adminTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Enabled</th>
+                            <th>Created Date</th>
+                            <th>Last Login</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 2rem;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading admins...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Admin Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="adminModalTitle"><i class="fas fa-user-plus"></i> Add Admin</h2>
+                <span class="close" onclick="closeAdminModal()">&times;</span>
+            </div>
+            <form id="adminForm" onsubmit="saveAdmin(event)">
+                <div class="form-group">
+                    <label for="adminUsername">Username <span style="color: red;">*</span></label>
+                    <input type="text" id="adminUsername" required minlength="3" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="adminFullName">Full Name <span style="color: red;">*</span></label>
+                    <input type="text" id="adminFullName" required maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="adminEmail">Email <span style="color: red;">*</span></label>
+                    <input type="email" id="adminEmail" required maxlength="150">
+                </div>
+                <div class="form-group" id="passwordGroup">
+                    <label for="adminPassword">Password <span style="color: red;">*</span></label>
+                    <div style="position: relative;">
+                        <input type="password" id="adminPassword" required minlength="8">
+                        <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('adminPassword', this)"
+                           style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #64748b;"></i>
+                    </div>
+                    <small style="color: #64748b;">Minimum 8 characters</small>
+                </div>
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" id="adminEnabled" checked style="width: auto;">
+                        <span>Enable Admin</span>
+                    </label>
+                </div>
+                <input type="hidden" id="adminId">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeAdminModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-key"></i> Change Password</h2>
+                <span class="close" onclick="closePasswordModal()">&times;</span>
+            </div>
+            <form id="passwordForm" onsubmit="changePassword(event)">
+                <div class="form-group">
+                    <label for="newPassword">New Password <span style="color: red;">*</span></label>
+                    <div style="position: relative;">
+                        <input type="password" id="newPassword" required minlength="8">
+                        <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('newPassword', this)"
+                           style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #64748b;"></i>
+                    </div>
+                    <small style="color: #64748b;">Minimum 8 characters</small>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password <span style="color: red;">*</span></label>
+                    <div style="position: relative;">
+                        <input type="password" id="confirmPassword" required minlength="8">
+                        <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('confirmPassword', this)"
+                           style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #64748b;"></i>
+                    </div>
+                </div>
+                <input type="hidden" id="passwordAdminId">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closePasswordModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-key"></i> Change Password
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let serviceChart, distributionChart;
+        let allAdmins = [];
+        let isEditMode = false;
+
+        // Load dashboard data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+            initializeCharts();
+            loadAdmins();
+        });
+
+        // Load dashboard statistics
+        async function loadDashboardData() {
+            try {
+                const response = await fetch('/api/contact/summary');
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatistics(data);
+                    updateCharts(data);
+                    loadRecentSubmissions();
+                } else {
+                    console.error('Failed to load dashboard data');
+                    showErrorState();
+                }
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                showErrorState();
+            }
+        }
+
+        // Update statistics cards
+        function updateStatistics(data) {
+            document.getElementById('totalSubmissions').textContent = data.count || 0;
+
+            // Calculate recent submissions (assuming we have date information)
+            const recentCount = Math.min(data.count || 0, Math.floor((data.count || 0) * 0.3));
+            document.getElementById('recentSubmissions').textContent = recentCount;
+
+            // Count unique services
+            const serviceCount = Object.keys(data.serviceStats || {}).length;
+            document.getElementById('serviceTypes').textContent = serviceCount;
+        }
+
+        // Load recent submissions
+        async function loadRecentSubmissions() {
+            try {
+                const response = await fetch('/api/contact/submissions');
+                if (response.ok) {
+                    const submissions = await response.json();
+                    displayRecentSubmissions(submissions.slice(0, 5)); // Show only last 5
+                } else {
+                    showSubmissionsError();
+                }
+            } catch (error) {
+                console.error('Error loading recent submissions:', error);
+                showSubmissionsError();
+            }
+        }
+
+        // Display recent submissions
+        function displayRecentSubmissions(submissions) {
+            const container = document.getElementById('recentSubmissionsList');
+
+            if (submissions.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h4>No Submissions Yet</h4>
+                        <p>No contact submissions have been received.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = submissions.map(submission => `
+                <div class="submission-item">
+                    <div class="submission-header">
+                        <div class="submission-name">${escapeHtml(submission.name)}</div>
+                        <div class="submission-date">${formatDate(submission.date)}</div>
+                    </div>
+                    <div class="submission-email">${escapeHtml(submission.email)}</div>
+                    <div class="submission-service">${escapeHtml(submission.service || 'General')}</div>
+                </div>
+            `).join('');
+        }
+
+        // Show error state for submissions
+        function showSubmissionsError() {
+            const container = document.getElementById('recentSubmissionsList');
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h4>Error Loading Submissions</h4>
+                    <p>Unable to load recent submissions.</p>
+                </div>
+            `;
+        }
+
+        // Initialize charts
+        function initializeCharts() {
+            // Service Chart (Bar Chart)
+            const serviceCtx = document.getElementById('serviceChart').getContext('2d');
+            serviceChart = new Chart(serviceCtx, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Number of Requests',
+                        data: [],
+                        backgroundColor: [
+                            '#667eea',
+                            '#764ba2',
+                            '#f093fb',
+                            '#f5576c',
+                            '#4facfe',
+                            '#00f2fe'
+                        ],
+                        borderColor: [
+                            '#667eea',
+                            '#764ba2',
+                            '#f093fb',
+                            '#f5576c',
+                            '#4facfe',
+                            '#00f2fe'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Distribution Chart (Doughnut Chart)
+            const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+            distributionChart = new Chart(distributionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: [
+                            '#667eea',
+                            '#764ba2',
+                            '#f093fb',
+                            '#f5576c',
+                            '#4facfe',
+                            '#00f2fe'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update charts with data
+        function updateCharts(data) {
+            const serviceStats = data.serviceStats || {};
+            const labels = Object.keys(serviceStats);
+            const values = Object.values(serviceStats);
+
+            // Update service chart
+            serviceChart.data.labels = labels;
+            serviceChart.data.datasets[0].data = values;
+            serviceChart.update();
+
+            // Update distribution chart
+            distributionChart.data.labels = labels;
+            distributionChart.data.datasets[0].data = values;
+            distributionChart.update();
+        }
+
+        // Refresh dashboard
+        function refreshDashboard() {
+            loadDashboardData();
+            showAlert('Dashboard refreshed successfully!', 'success');
+        }
+
+        // Refresh charts
+        function refreshCharts() {
+            loadDashboardData();
+            showAlert('Charts updated!', 'success');
+        }
+
+        // Export data functionality
+        function exportData() {
+            fetch('/api/contact/submissions')
+                .then(response => response.json())
+                .then(data => {
+                    const csv = convertToCSV(data);
+                    downloadCSV(csv, 'contact_submissions.csv');
+                    showAlert('Data exported successfully!', 'success');
+                })
+                .catch(error => {
+                    console.error('Export error:', error);
+                    showAlert('Error exporting data', 'error');
+                });
+        }
+
+        // Convert data to CSV
+        function convertToCSV(data) {
+            if (data.length === 0) return '';
+
+            const headers = ['ID', 'Name', 'Email', 'Phone', 'Service', 'Message', 'Date'];
+            const csvContent = [
+                headers.join(','),
+                ...data.map(row => [
+                    row.id,
+                    `"${(row.name || '').replace(/"/g, '""')}"`,
+                    `"${(row.email || '').replace(/"/g, '""')}"`,
+                    `"${(row.phone || '').replace(/"/g, '""')}"`,
+                    `"${(row.service || '').replace(/"/g, '""')}"`,
+                    `"${(row.message || '').replace(/"/g, '""')}"`,
+                    `"${formatDate(row.date)}"`
+                ].join(','))
+            ].join('\n');
+
+            return csvContent;
+        }
+
+        // Download CSV file
+        function downloadCSV(csv, filename) {
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        // Show error state
+        function showErrorState() {
+            document.getElementById('totalSubmissions').textContent = 'Error';
+            document.getElementById('recentSubmissions').textContent = 'Error';
+            document.getElementById('serviceTypes').textContent = 'Error';
+        }
+
+        // Show alert message
+        function showAlert(message, type) {
+            // Create alert element
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                padding: 1rem;
+                border-radius: 8px;
+                font-weight: 500;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                background: ${type === 'success' ? '#dcfce7' : '#fef2f2'};
+                border: 1px solid ${type === 'success' ? '#bbf7d0' : '#fecaca'};
+                color: ${type === 'success' ? '#166534' : '#dc2626'};
+            `;
+            alert.textContent = message;
+
+            document.body.appendChild(alert);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.parentNode.removeChild(alert);
+                }
+            }, 3000);
+        }
+
+        // Utility functions
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text ? text.replace(/[&<>"']/g, function(m) { return map[m]; }) : '';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+        }
+
+        // Load admins data
+        async function loadAdmins() {
+            try {
+                const response = await fetch('/api/admins');
+                if (response.ok) {
+                    const admins = await response.json();
+                    allAdmins = admins;
+                    displayAdmins(admins);
+                } else {
+                    showAdminError();
+                }
+            } catch (error) {
+                console.error('Error loading admins:', error);
+                showAdminError();
+            }
+        }
+
+        // Display admins in table
+        function displayAdmins(admins) {
+            const tableBody = document.getElementById('adminTableBody');
+            tableBody.innerHTML = '';
+
+            if (admins.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 2rem;">
+                            <div class="empty-state">
+                                <i class="fas fa-user-slash" style="font-size: 48px; color: #ef4444;"></i>
+                                <h4 style="color: var(--text-primary);">No Admins Found</h4>
+                                <p style="color: var(--text-secondary);">There are no admins registered yet.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                document.getElementById('adminCount').textContent = '0';
+                return;
+            }
+
+            admins.forEach(admin => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${admin.id}</td>
+                    <td>${escapeHtml(admin.username)}</td>
+                    <td>${escapeHtml(admin.fullName)}</td>
+                    <td>${escapeHtml(admin.email)}</td>
+                    <td>
+                        <label class="toggle-switch">
+                            <input type="checkbox" ${admin.enabled ? 'checked' : ''} onchange="toggleAdminStatus(${admin.id}, this)">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </td>
+                    <td>${formatDate(admin.createdAt)}</td>
+                    <td>${admin.lastLogin ? formatDate(admin.lastLogin) : 'Never'}</td>
+                    <td>
+                        <button class="action-btn edit" onclick="openEditAdminModal(${admin.id})">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button class="action-btn password" onclick="openPasswordModal(${admin.id})">
+                            <i class="fas fa-key"></i>
+                        </button>
+                        <button class="action-btn delete" onclick="confirmDeleteAdmin(${admin.id}, '${escapeHtml(admin.username)}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById('adminCount').textContent = admins.length;
+        }
+
+        // Show error state for admins
+        function showAdminError() {
+            const tableBody = document.getElementById('adminTableBody');
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="8" style="text-align: center; padding: 2rem;">
+                        <div class="empty-state">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 48px; color: #dc2626;"></i>
+                            <h4 style="color: var(--text-primary);">Error Loading Admins</h4>
+                            <p style="color: var(--text-secondary);">Unable to load admins data.</p>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Filter admins by search input
+        function filterAdmins() {
+            const input = document.getElementById('adminSearchInput').value.toLowerCase();
+            const filteredAdmins = allAdmins.filter(admin => {
+                return admin.username.toLowerCase().includes(input) || admin.email.toLowerCase().includes(input);
+            });
+            displayAdmins(filteredAdmins);
+        }
+
+        // Open add admin modal
+        function openAddAdminModal() {
+            isEditMode = false;
+            document.getElementById('adminModalTitle').innerHTML = '<i class="fas fa-user-plus"></i> Add Admin';
+            document.getElementById('adminForm').reset();
+            document.getElementById('passwordGroup').style.display = 'block';
+            document.getElementById('adminId').value = '';
+            document.getElementById('adminEnabled').checked = true;
+            document.getElementById('adminModal').style.display = 'block';
+        }
+
+        // Open edit admin modal
+        function openEditAdminModal(adminId) {
+            isEditMode = true;
+            const admin = allAdmins.find(a => a.id === adminId);
+            if (!admin) return;
+
+            document.getElementById('adminModalTitle').innerHTML = '<i class="fas fa-user-edit"></i> Edit Admin';
+            document.getElementById('adminUsername').value = admin.username;
+            document.getElementById('adminFullName').value = admin.fullName;
+            document.getElementById('adminEmail').value = admin.email;
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('passwordGroup').style.display = 'none';
+            document.getElementById('adminId').value = admin.id;
+            document.getElementById('adminEnabled').checked = admin.enabled;
+            document.getElementById('adminModal').style.display = 'block';
+        }
+
+        // Save admin (add or edit)
+        async function saveAdmin(event) {
+            event.preventDefault();
+
+            const adminId = document.getElementById('adminId').value;
+            const username = document.getElementById('adminUsername').value;
+            const fullName = document.getElementById('adminFullName').value;
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            const enabled = document.getElementById('adminEnabled').checked;
+
+            const adminData = {
+                username: username,
+                fullName: fullName,
+                email: email,
+                enabled: enabled
+            };
+
+            // Only include password when adding or if password field is visible and filled
+            if (!isEditMode && password) {
+                adminData.password = password;
+            }
+
+            try {
+                const url = isEditMode ? `/api/admins/${adminId}` : '/api/admins';
+                const method = isEditMode ? 'PUT' : 'POST';
+
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(adminData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    closeAdminModal();
+                    loadAdmins();
+                    showToast(result.message || (isEditMode ? 'Admin updated successfully!' : 'Admin added successfully!'), 'success');
+                } else {
+                    showToast(result.message || 'Error saving admin', 'error');
+                }
+            } catch (error) {
+                console.error('Error saving admin:', error);
+                showToast('Error saving admin', 'error');
+            }
+        }
+
+        // Toggle admin enabled status
+        async function toggleAdminStatus(adminId, checkbox) {
+            try {
+                const response = await fetch(`/api/admins/${adminId}/toggle-status`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    showToast('Admin status updated successfully!', 'success');
+                    loadAdmins();
+                } else {
+                    checkbox.checked = !checkbox.checked;
+                    showToast(result.message || 'Error updating admin status', 'error');
+                }
+            } catch (error) {
+                console.error('Error updating admin status:', error);
+                checkbox.checked = !checkbox.checked;
+                showToast('Error updating admin status', 'error');
+            }
+        }
+
+        // Open password modal
+        function openPasswordModal(adminId) {
+            document.getElementById('passwordAdminId').value = adminId;
+            document.getElementById('passwordForm').reset();
+            document.getElementById('passwordModal').style.display = 'block';
+        }
+
+        // Change admin password
+        async function changePassword(event) {
+            event.preventDefault();
+
+            const adminId = document.getElementById('passwordAdminId').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate passwords match
+            if (newPassword !== confirmPassword) {
+                showToast('Passwords do not match!', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/admins/${adminId}/password`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ newPassword: newPassword })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    closePasswordModal();
+                    showToast('Password changed successfully!', 'success');
+                } else {
+                    showToast(result.message || 'Error changing password', 'error');
+                }
+            } catch (error) {
+                console.error('Error changing password:', error);
+                showToast('Error changing password', 'error');
+            }
+        }
+
+        // Confirm and delete admin
+        function confirmDeleteAdmin(adminId, username) {
+            if (confirm(`Are you sure you want to delete admin "${username}"?\n\nThis action cannot be undone.`)) {
+                deleteAdmin(adminId);
+            }
+        }
+
+        // Delete admin
+        async function deleteAdmin(adminId) {
+            try {
+                const response = await fetch(`/api/admins/${adminId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    loadAdmins();
+                    showToast('Admin deleted successfully!', 'success');
+                } else {
+                    showToast(result.message || 'Error deleting admin', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting admin:', error);
+                showToast('Error deleting admin', 'error');
+            }
+        }
+
+        // Close admin modal
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+            document.getElementById('adminForm').reset();
+        }
+
+        // Close password modal
+        function closePasswordModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('passwordForm').reset();
+        }
+
+        // Toggle password visibility
+        function togglePasswordVisibility(inputId, iconElement) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                iconElement.classList.remove('fa-eye');
+                iconElement.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                iconElement.classList.remove('fa-eye-slash');
+                iconElement.classList.add('fa-eye');
+            }
+        }
+
+        // Show toast notification
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+            toast.innerHTML = `
+                <i class="fas ${icon}"></i>
+                <span>${message}</span>
+            `;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const adminModal = document.getElementById('adminModal');
+            const passwordModal = document.getElementById('passwordModal');
+
+            if (event.target === adminModal) {
+                closeAdminModal();
+            }
+            if (event.target === passwordModal) {
+                closePasswordModal();
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Ananta Digi Service - Learn about our mission, vision, and team.">
+    <meta name="keywords" content="web development, app development, digital marketing, SEO, hosting, social media management">
+    <meta name="author" content="Ananta Digi Service">
+    <title>About Us - Ananta Digi Service</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ads.png">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Theme Colors */
+        :root {
+            --primary-color: #6A0DAD;
+            --secondary-color: #1E90FF;
+            --accent-color: #FF6B35;
+            --dark-color: #2C3E50;
+            --light-color: #F8F9FA;
+            --text-color: #333;
+            --bg-color: #fff;
+        }
+
+        body.dark-mode {
+            --primary-color: #9B59B6;
+            --secondary-color: #3498DB;
+            --accent-color: #E67E22;
+            --dark-color: #E0E0E0;
+            --light-color: #2C3E50;
+            --text-color: #F8F9FA;
+            --bg-color: #1a1a1a;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #1A237E;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1030;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 30px;
+            margin-right: 10px;
+            display: inline;
+        }
+
+        .navbar-brand .brand-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .explore-icon {
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 15px;
+            display: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #mobile-theme-toggle {
+            display: none;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transition: padding 0.3s ease-in-out;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff, #f1f1f1);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1050;
+            padding-top: 20px;
+        }
+
+        body.dark-mode .sidebar {
+            background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.dark-mode .sidebar-header {
+            border-bottom: 1px solid #444;
+        }
+
+        .brand-name-sidebar {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+        }
+
+        .sidebar a {
+            color: var(--text-color);
+            padding: 15px 25px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        body.dark-mode .sidebar a {
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar a:hover {
+            background: rgba(106, 13, 173, 0.05);
+            padding-left: 30px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Bottom Navigation Styles */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: rgba(20, 28, 70, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+
+        body.dark-mode .bottom-nav {
+            background: rgba(10, 10, 20, 0.7);
+        }
+
+        .bottom-nav .nav-link {
+            color: orange;
+            text-align: center;
+            padding: 0;
+            flex: 1;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .bottom-nav .nav-link .icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 2px;
+            border-radius: 50%;
+        }
+
+        .bottom-nav .nav-link i {
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            z-index: 2;
+            color: white;
+        }
+
+        .bottom-nav .nav-link.active .icon-wrapper {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #0052d4, #4364f7, #6fb1fc);
+            box-shadow: 0 0 20px 4px rgba(100, 150, 250, 0.6), 0 0 8px rgba(252, 246, 186, 0.5);
+        }
+
+        .bottom-nav .nav-link.active i {
+            color: white;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="50" fill="rgba(255,255,255,0.05)"/><circle cx="900" cy="400" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="1100" cy="150" r="60" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .mission-vision {
+            background: var(--light-color);
+            padding: 50px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        body.dark-mode .mission-vision {
+            background: var(--light-color);
+        }
+
+        .mission-vision h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .mission-vision p {
+            color: #666;
+        }
+
+        body.dark-mode .mission-vision p {
+            color: #aaa;
+        }
+
+        .feature-box {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .feature-box {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .feature-box:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .feature-box h5 {
+            color: var(--dark-color);
+        }
+
+        .service-card {
+            background: var(--bg-color);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        body.dark-mode .service-card {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106,13,173,0.15);
+            border-color: var(--primary-color);
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .service-card p {
+            color: #aaa;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        body.dark-mode .section-title p {
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .explore-icon {
+                display: block;
+            }
+            #mobile-theme-toggle {
+                display: flex;
+            }
+            .navbar-collapse {
+                display: none !important;
+            }
+            .bottom-nav {
+                display: flex;
+            }
+            .footer {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            #desktop-theme-toggle .theme-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .hero-section {
+                padding: 80px 0 60px;
+            }
+
+            .mission-vision {
+                padding: 30px;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .sidebar {
+                width: 250px;
+                left: -250px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                height: 28px;
+                margin-right: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <div class="navbar-left">
+            <a id="explore-icon" class="explore-icon">
+                <i class="bi bi-list"></i>
+            </a>
+            <a class="navbar-brand" href="home.html">
+                <img src="images/ads.png" alt="Ananta Digi Service Logo" class="brand-logo">
+                <span class="brand-name">Ananta Digi Service</span>
+            </a>
+        </div>
+
+        <div id="mobile-theme-toggle" class="theme-toggle">
+            <i class="bi bi-sun-fill"></i>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item" id="desktop-theme-toggle">
+                    <a class="theme-toggle nav-link">
+                        <i class="bi bi-sun-fill"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <span class="brand-name-sidebar">Ananta Digi Service</span>
+    </div>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+</div>
+<div class="sidebar-overlay"></div>
+
+<main class="main-content">
+    <!-- About Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 style="color: #fff;">About Ananta Digi Service</h1>
+                <p>Empowering businesses through innovative digital solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/adsp.png" alt="About Us" style="width: 100%; height: auto; display: block;">
+                </div>
+                <div class="about-text">
+                    <h2 class="mb-4" style="color: var(--primary-color);">Who We Are</h2>
+                    <p>Ananta Digi Service is a full-service digital agency dedicated to helping businesses thrive in the digital age. Founded with a passion for technology and innovation, we specialize in creating comprehensive digital solutions that drive growth and success.</p>
+                    <p>Our team of experienced developers, designers, marketers, and creative professionals work collaboratively to deliver exceptional results. We believe in building long-term partnerships with our clients, understanding their unique challenges, and providing tailored solutions that exceed expectations.</p>
+                    <p>From startups to established enterprises, we've helped numerous businesses establish their online presence, streamline operations, and achieve their digital goals.</p>
+                </div>
+            </div>
+
+            <div class="mission-vision">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h3><i class="bi bi-bullseye"></i> Our Mission</h3>
+                        <p>To empower businesses with innovative digital solutions that drive growth, enhance efficiency, and create lasting value. We strive to be the trusted partner for all your digital needs, delivering excellence in every project.</p>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h3><i class="bi bi-eye"></i> Our Vision</h3>
+                        <p>To be the leading digital solutions provider, recognized for our commitment to quality, innovation, and customer satisfaction. We envision a future where every business, regardless of size, has access to world-class digital services.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="feature-box">
+                        <h2 style="color: var(--accent-color); font-size: 3rem;">50+</h2>
+                        <h5>Projects Completed</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="feature-box">
+                        <h2 style="color: var(--accent-color); font-size: 3rem;">20+</h2>
+                        <h5>Happy Clients</h5>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="feature-box">
+                        <h2 style="color: var(--accent-color); font-size: 3rem;">8+</h2>
+                        <h5>Years Experience</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section-padding" style="background: var(--light-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+                <p>Meet the experts behind our success</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='100' fill='%236A0DAD'/%3E%3Ccircle cx='100' cy='80' r='30' fill='%23ffffff'/%3E%3Cpath d='M60 140 Q100 120 140 140 L140 200 L60 200 Z' fill='%23ffffff'/%3E%3C/svg%3E" alt="Team Member" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;">
+                        <h4>Founder & CEO</h4>
+                        <p>Visionary leader with 10+ years in digital solutions</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='100' fill='%231E90FF'/%3E%3Ccircle cx='100' cy='80' r='30' fill='%23ffffff'/%3E%3Cpath d='M60 140 Q100 120 140 140 L140 200 L60 200 Z' fill='%23ffffff'/%3E%3C/svg%3E" alt="Team Member" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;">
+                        <h4>Lead Developer</h4>
+                        <p>Full-stack expert specializing in modern web technologies</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='100' fill='%23FF6B35'/%3E%3Ccircle cx='100' cy='80' r='30' fill='%23ffffff'/%3E%3Cpath d='M60 140 Q100 120 140 140 L140 200 L60 200 Z' fill='%23ffffff'/%3E%3C/svg%3E" alt="Team Member" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;">
+                        <h4>Creative Director</h4>
+                        <p>Award-winning designer with a passion for innovation</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='100' fill='%2325D366'/%3E%3Ccircle cx='100' cy='80' r='30' fill='%23ffffff'/%3E%3Cpath d='M60 140 Q100 120 140 140 L140 200 L60 200 Z' fill='%23ffffff'/%3E%3C/svg%3E" alt="Team Member" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;">
+                        <h4>Marketing Head</h4>
+                        <p>Digital marketing strategist with proven track record</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>About Ananta Digi Service</h5>
+                    <p>We are your complete digital and development partner, offering comprehensive solutions for web development, app development, digital marketing, and creative services.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy & Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">App Development</a></li>
+                        <li><a href="services.html">Digital Marketing</a></li>
+                        <li><a href="services.html">Social Media</a></li>
+                        <li><a href="services.html">Video Production</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul>
+                        <li><i class="bi bi-geo-alt-fill"></i> ANANTAPUR, INDIA</li>
+                        <li><i class="bi bi-telephone-fill"></i> +91 7659872496</li>
+                        <li><i class="bi bi-envelope-fill"></i> ANANTADIGISERVICE@GMAIL.COM</li>
+                        <li><i class="bi bi-clock-fill"></i> Mon - Sat: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ananta Digi Service. All rights reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i></p>
+            </div>
+        </div>
+    </footer>
+</main>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="home.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-house-door-fill"></i>
+        </span>
+        Home
+    </a>
+    <a href="services.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-hdd-stack-fill"></i>
+        </span>
+        Services
+    </a>
+    <a href="portfolio.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-briefcase-fill"></i>
+        </span>
+        Portfolio
+    </a>
+    <a href="contact.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-envelope-fill"></i>
+        </span>
+        Contact
+    </a>
+    <a href="about.html" class="nav-link active">
+        <span class="icon-wrapper">
+            <i class="bi bi-person-circle"></i>
+        </span>
+        About
+    </a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Adjust content padding for fixed header and bottom nav
+        function adjustContentPadding() {
+            const navbar = document.querySelector('.navbar');
+            const bottomNav = document.querySelector('.bottom-nav');
+            const mainContent = document.querySelector('.main-content');
+
+            if (navbar && mainContent) {
+                const navbarHeight = navbar.offsetHeight;
+                mainContent.style.paddingTop = `${navbarHeight}px`;
+            }
+
+            if (bottomNav && mainContent) {
+                const bottomNavStyles = window.getComputedStyle(bottomNav);
+                if (bottomNavStyles.display !== 'none') {
+                    const bottomNavHeight = bottomNav.offsetHeight;
+                    mainContent.style.paddingBottom = `${bottomNavHeight}px`;
+                } else {
+                    mainContent.style.paddingBottom = '0px';
+                }
+            }
+        }
+
+        adjustContentPadding();
+        window.addEventListener('resize', adjustContentPadding);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Bottom navigation click handling
+        const bottomNavLinks = document.querySelectorAll('.bottom-nav .nav-link');
+        bottomNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                bottomNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Sidebar toggle
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const exploreIcon = document.getElementById('explore-icon');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+            setTimeout(adjustContentPadding, 400);
+        }
+
+        exploreIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            toggleSidebar();
+        });
+
+        // Theme toggle
+        const desktopToggle = document.getElementById('desktop-theme-toggle');
+        const mobileToggle = document.getElementById('mobile-theme-toggle');
+        const body = document.body;
+
+        function setIcons() {
+            const isDarkMode = body.classList.contains('dark-mode');
+            const desktopIcon = desktopToggle.querySelector('i');
+            const mobileIcon = mobileToggle.querySelector('i');
+
+            if (isDarkMode) {
+                desktopIcon.classList.remove('bi-sun-fill');
+                desktopIcon.classList.add('bi-moon-fill');
+                mobileIcon.classList.remove('bi-sun-fill');
+                mobileIcon.classList.add('bi-moon-fill');
+            } else {
+                desktopIcon.classList.remove('bi-moon-fill');
+                desktopIcon.classList.add('bi-sun-fill');
+                mobileIcon.classList.remove('bi-moon-fill');
+                mobileIcon.classList.add('bi-sun-fill');
+            }
+        }
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+            setIcons();
+        }
+
+        // Check saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        setIcons();
+
+        desktopToggle.addEventListener('click', toggleTheme);
+        mobileToggle.addEventListener('click', toggleTheme);
+    });
+</script>
+</body>
+</html>

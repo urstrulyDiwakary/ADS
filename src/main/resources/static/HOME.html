@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ananta Digi Service - Your Complete Digital & Development Partner. We offer web development, app development, hosting, SEO, social media management, and more.">
+    <meta name="keywords" content="web development, app development, digital marketing, SEO, hosting, social media management,VIDEOSHHOT,ADS RUNNING">
+    <meta name="author" content="Ananta Digi Service">
+    <title>Ananta Digi Service - Your Complete Digital Partner</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ads.png">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Theme Colors */
+        :root {
+            --primary-color: #6A0DAD;
+            --secondary-color: #1E90FF;
+            --accent-color: #FF6B35;
+            --dark-color: #2C3E50;
+            --light-color: #F8F9FA;
+            --text-color: #333;
+            --bg-color: #fff;
+        }
+
+        body.dark-mode {
+            --primary-color: #9B59B6;
+            --secondary-color: #3498DB;
+            --accent-color: #E67E22;
+            --dark-color: #E0E0E0;
+            --light-color: #2C3E50;
+            --text-color: #F8F9FA;
+            --bg-color: #1a1a1a;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #1A237E;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1030;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .brand-logo {
+            height: 30px;
+            margin-right: 10px;
+            display: inline;
+        }
+
+        .navbar-brand .brand-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .explore-icon {
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 15px;
+            display: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #mobile-theme-toggle {
+            display: none;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transition: padding 0.3s ease-in-out;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="50" fill="rgba(255,255,255,0.05)"/><circle cx="900" cy="400" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="1100" cy="150" r="60" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+            color: white;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .btn-primary-custom {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn-primary-custom:hover {
+            background: #E55A2B;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,53,0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+            animation: fadeInRight 1s ease 0.3s backwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            object-fit: contain;
+            aspect-ratio: 1.2/1;
+            display: block;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2));
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Section Styles */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        body.dark-mode .section-title p {
+            color: #aaa;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            background: var(--light-color);
+        }
+
+        body.dark-mode .why-choose-us {
+            background: var(--bg-color);
+        }
+
+        .why-choose-us .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .why-choose-us .col-lg-4,
+        .why-choose-us .col-md-6 {
+            padding: 0 15px;
+            margin-bottom: 30px;
+            display: flex;
+        }
+
+        .reason-card {
+            background: var(--bg-color);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            width: 100%;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body.dark-mode .reason-card {
+            background: var(--light-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106,13,173,0.15);
+            border-color: var(--primary-color);
+        }
+
+        .reason-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .reason-card:hover .reason-icon {
+            transform: rotateY(360deg);
+        }
+
+        .reason-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .reason-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        body.dark-mode .reason-card p {
+            color: #aaa;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: var(--bg-color);
+            padding-bottom: 1rem;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: start;
+            gap: 25px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--light-color);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .process-step {
+            background: var(--light-color);
+        }
+
+        .process-step:hover {
+            background: var(--bg-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateX(10px);
+        }
+
+        body.dark-mode .process-step:hover {
+            background: #1a1a1a;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .process-number {
+            min-width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .process-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .process-content p {
+            color: #666;
+            margin: 0;
+        }
+
+        body.dark-mode .process-content p {
+            color: #aaa;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: linear-gradient(135deg, rgba(106,13,173,0.05), rgba(30,144,255,0.05));
+        }
+
+        body.dark-mode .testimonials-section {
+            background: linear-gradient(135deg, rgba(155,89,182,0.1), rgba(52,152,219,0.1));
+        }
+
+        .testimonials-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-carousel {
+            flex: 1;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 10px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            height: 100%;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        body.dark-mode .testimonial-card {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        body.dark-mode .testimonial-text {
+            color: #ccc;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .author-info h5 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .author-info p {
+            color: #aaa;
+        }
+
+        /* Carousel Arrows */
+        .carousel-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(106,13,173,0.3);
+        }
+
+        .carousel-arrow:active {
+            transform: scale(0.95);
+        }
+
+        .carousel-arrow i {
+            pointer-events: none;
+        }
+
+        /* Responsive Design for Carousel */
+        @media (max-width: 768px) {
+            .testimonials-carousel-wrapper {
+                gap: 10px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .testimonial-card {
+                padding: 30px 25px;
+                min-height: 300px;
+            }
+
+            .testimonial-card::before {
+                font-size: 4rem;
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                border-width: 1.5px;
+            }
+
+            .testimonials-carousel-wrapper {
+                gap: 5px;
+            }
+
+            .testimonial-slide {
+                padding: 0 5px;
+            }
+
+            .testimonial-card {
+                padding: 25px 20px;
+            }
+        }
+
+        .feature-box {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .feature-box {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .feature-box:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .feature-box i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Key Benefits Section */
+        .key-benefits-section {
+            padding-top: 1rem;
+        }
+
+        .key-benefits-section .benefits-wrapper {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: center; /* Center items when they wrap */
+            gap: 30px; /* Spacing between cards */
+        }
+
+        .key-benefits-section .benefit-item {
+            flex: 1; /* Allow items to grow and shrink */
+            min-width: 280px; /* Minimum width for cards before wrapping */
+            max-width: 350px; /* Maximum width for cards on desktop */
+        }
+
+        .key-benefits-section .feature-box {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 0; /* Remove margin-bottom as gap handles spacing */
+            transition: all 0.3s ease;
+            aspect-ratio: 1/1; /* Make it square */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%; /* Ensure it takes full height of benefit-item */
+        }
+
+        /* Responsive adjustments for Key Benefits */
+        @media (min-width: 992px) { /* Desktop view */
+            .key-benefits-section .benefits-wrapper {
+                flex-wrap: nowrap; /* Keep items in a single row */
+                justify-content: space-around; /* Distribute space evenly */
+            }
+            .key-benefits-section .benefit-item {
+                flex: 1; /* Equal width for all cards */
+                max-width: calc(33.33% - 20px); /* Adjust for gap */
+            }
+        }
+
+        @media (max-width: 991px) { /* Tablet and mobile views */
+            .key-benefits-section .benefits-wrapper {
+                flex-direction: column; /* Stack vertically */
+                align-items: center; /* Center cards */
+            }
+            .key-benefits-section .benefit-item {
+                width: 100%; /* Full width for stacked cards */
+                max-width: 400px; /* Limit width on larger tablets */
+                margin-bottom: 30px; /* Add back margin for vertical spacing */
+            }
+            .key-benefits-section .benefit-item:last-child {
+                margin-bottom: 0; /* No margin for the last item */
+            }
+        }
+
+        /* Gold Ribbon Divider */
+        .gold-ribbon-divider {
+            height: 1rem;
+            width: 100%;
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1DA851;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Bottom Navigation Styles */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: rgba(20, 28, 70, 0.7); /* Deep Indigo/Navy Blue with transparency */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+
+        body.dark-mode .bottom-nav {
+             background: rgba(10, 10, 20, 0.7);
+        }
+
+        .bottom-nav .nav-link {
+            color: orange;
+            text-align: center;
+            padding: 0;
+            flex: 1;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .bottom-nav .nav-link .icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 2px;
+            border-radius: 50%;
+        }
+
+        .bottom-nav .nav-link i {
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            z-index: 2;
+            color: white;
+        }
+
+        .bottom-nav .nav-link:hover {
+            color: white;
+        }
+
+        .bottom-nav .nav-link.active {
+            color: orange;
+        }
+
+        .bottom-nav .nav-link.active .icon-wrapper {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #0052d4, #4364f7, #6fb1fc); /* Gradient Blue */
+            box-shadow: 0 0 20px 4px rgba(100, 150, 250, 0.6), 0 0 8px rgba(252, 246, 186, 0.5); /* Blue and soft gold glow */
+        }
+
+        .bottom-nav .nav-link.active i {
+            color: white;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff, #f1f1f1);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1050;
+            padding-top: 20px;
+        }
+
+        body.dark-mode .sidebar {
+            background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.dark-mode .sidebar-header {
+            border-bottom: 1px solid #444;
+        }
+
+        .brand-name-sidebar {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+        }
+
+        .sidebar a {
+            color: var(--text-color);
+            padding: 15px 25px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        body.dark-mode .sidebar a {
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar a:hover {
+            background: rgba(106, 13, 173, 0.05);
+            padding-left: 30px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .explore-icon {
+                display: block;
+            }
+            #mobile-theme-toggle {
+                display: flex;
+            }
+            .navbar-collapse {
+                display: none !important;
+            }
+            .bottom-nav {
+                display: flex;
+            }
+            .footer {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            #desktop-theme-toggle .theme-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .hero-image {
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            .sidebar {
+                width: 250px;
+                left: -250px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .process-step {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-section .row {
+                flex-direction: column-reverse !important;
+                display: flex;
+            }
+            .hero-image {
+                margin-top: 32px;
+                margin-bottom: 0;
+                justify-content: center;
+            }
+            .hero-content {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 60px 0 40px;
+            }
+            .hero-image img {
+                max-width: 90vw;
+                aspect-ratio: 1.2/1;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                height: 28px;
+                margin-right: 8px;
+            }
+        }
+
+        @media (max-width: 327px) {
+            .sidebar {
+                width: 240px;
+                left: -240px;
+            }
+        }
+
+        @media (max-width: 315px) {
+            .brand-name {
+                display: inline;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                height: 24px;
+                margin-right: 6px;
+            }
+            .explore-icon {
+                font-size: 1.1rem;
+                margin-right: 8px;
+            }
+        }
+
+        @media (max-width: 244px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .explore-icon {
+                font-size: 1rem;
+            }
+            .bottom-nav .nav-link {
+                padding: 8px 0;
+                font-size: 0.8rem;
+            }
+            .bottom-nav .nav-link i {
+                font-size: 1rem;
+            }
+            .hero-section h1 { font-size: 1.8rem; }
+            .hero-section p { font-size: 1rem; }
+            .section-title h2 { font-size: 1.5rem; }
+        }
+
+        /* Page Transition */
+        .page-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Loading Animation for Images */
+        img {
+            transition: opacity 0.3s ease;
+        }
+
+        img:not([src]) {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <div class="navbar-left">
+            <a id="explore-icon" class="explore-icon">
+                <i class="bi bi-list"></i>
+            </a>
+            <a class="navbar-brand" href="home.html">
+                <img src="images/ads.png" alt="Ananta Digi Service Logo" class="brand-logo">
+                <span class="brand-name">Ananta Digi Service</span>
+            </a>
+        </div>
+
+        <div id="mobile-theme-toggle" class="theme-toggle">
+            <i class="bi bi-sun-fill"></i>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item" id="desktop-theme-toggle">
+                    <a class="theme-toggle nav-link">
+                        <i class="bi bi-sun-fill"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <span class="brand-name-sidebar">Ananta Digi Service</span>
+    </div>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+</div>
+<div class="sidebar-overlay"></div>
+
+<main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>Your Complete Digital & Development Partner</h1>
+                    <p>Transform your business with cutting-edge web development, app solutions, and comprehensive digital services.</p>
+                    <a href="contact.html" class="btn btn-primary-custom">
+                        Get a Free Quote <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-lg-6 hero-image">
+                    <img src="images/png.png" alt="Target Your Digital Success" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-ribbon-divider"></div>
+
+    <!-- Stats Section -->
+    <section class="section-padding stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <span class="stat-number" data-count="250">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <span class="stat-number" data-count="180">0</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <span class="stat-number" data-count="15">0</span>
+                        <span class="stat-label">Team Members</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-box">
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-padding why-choose-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Makes Us Different</h2>
+                <p>Discover the advantages of partnering with Ananta Digi Service</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
+                        <h4>Proven Expertise</h4>
+                        <p>Over 8 years of experience delivering successful digital solutions across various industries and technologies.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h4>Dedicated Team</h4>
+                        <p>Our skilled professionals are passionate about creating exceptional results and exceeding client expectations.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h4>Fast Delivery</h4>
+                        <p>We prioritize efficiency without compromising quality, ensuring your projects are completed on time.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4>Quality Assurance</h4>
+                        <p>Rigorous testing and quality control processes ensure flawless execution and superior results.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <h4>Competitive Pricing</h4>
+                        <p>Transparent pricing with no hidden costs. We offer excellent value for your investment.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h4>24/7 Support</h4>
+                        <p>Round-the-clock customer support to address your concerns and ensure smooth operations.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h4>Scalable Solutions</h4>
+                        <p>Our solutions grow with your business, adapting to your changing needs and requirements.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <h4>Innovation First</h4>
+                        <p>We stay ahead of industry trends, implementing cutting-edge technologies and best practices.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="reason-card">
+                        <div class="reason-icon">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                        </div>
+                        <h4>Client Satisfaction</h4>
+                        <p>Your success is our priority. We're committed to building long-term relationships based on trust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process Section -->
+    <section class="section-padding process-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Working Process</h2>
+                <p>A systematic approach to delivering exceptional results</p>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <div class="process-content">
+                    <h4>Discovery & Consultation</h4>
+                    <p>We start by understanding your business goals, challenges, and requirements through detailed discussions and research.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <div class="process-content">
+                    <h4>Strategy & Planning</h4>
+                    <p>Our team develops a comprehensive strategy and project roadmap tailored to your specific needs and objectives.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <div class="process-content">
+                    <h4>Design & Development</h4>
+                    <p>We bring your vision to life with creative designs and robust development, keeping you involved throughout the process.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <div class="process-content">
+                    <h4>Testing & Quality Assurance</h4>
+                    <p>Rigorous testing ensures your solution works flawlessly across all platforms and meets the highest quality standards.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <div class="process-content">
+                    <h4>Launch & Deployment</h4>
+                    <p>We handle the complete deployment process, ensuring a smooth launch with minimal disruption to your operations.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">6</div>
+                <div class="process-content">
+                    <h4>Ongoing Support & Maintenance</h4>
+                    <p>Our relationship doesn't end at launch. We provide continuous support, updates, and optimization to ensure long-term success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Benefits Section -->
+    <section class="section-padding key-benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Benefits</h2>
+                <p>Comprehensive digital solutions tailored to your business needs</p>
+            </div>
+            <div class="benefits-wrapper">
+                <div class="benefit-item">
+                    <div class="feature-box">
+                        <i class="bi bi-lightning-charge"></i>
+                        <h4>Fast Delivery</h4>
+                        <p>Quick turnaround times without compromising on quality or attention to detail.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="feature-box">
+                        <i class="bi bi-headset"></i>
+                        <h4>24/7 Support</h4>
+                        <p>Round-the-clock customer support to address your concerns and queries.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="feature-box">
+                        <i class="bi bi-currency-dollar"></i>
+                        <h4>Affordable Pricing</h4>
+                        <p>Competitive rates and flexible packages designed to fit your budget.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Don't just take our word for it - hear from our satisfied clients</p>
+            </div>
+
+            <div class="testimonials-carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow-left" id="prevTestimonial">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+
+                <div class="testimonials-carousel">
+                    <div class="testimonials-track">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">Ananta Digii Solutions transformed our online presence with a stunning website and effective digital marketing strategy. Their professionalism and expertise are unmatched!</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">RS</div>
+                                    <div class="author-info">
+                                        <h5>Rajesh Sharma</h5>
+                                        <p>CEO, TechVenture Inc.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">The mobile app they developed for us exceeded all expectations. The team was responsive, creative, and delivered exactly what we needed on time and within budget.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">PK</div>
+                                    <div class="author-info">
+                                        <h5>Priya Kumar</h5>
+                                        <p>Founder, FreshMart</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">Outstanding service! Their SEO strategies helped us rank on the first page of Google. Our traffic and conversions have increased significantly. Highly recommended!</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">AM</div>
+                                    <div class="author-info">
+                                        <h5>Amit Mehta</h5>
+                                        <p>Marketing Director, StyleHub</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow carousel-arrow-right" id="nextTestimonial">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="color: white;">Ready to Transform Your Digital Presence?</h2>
+            <p class="mb-4">Contact us today for a free consultation and quote</p>
+            <button class="btn btn-whatsapp" onclick="window.open('https://wa.me/91 7659872496', '_blank')">
+                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>About Ananta Digi Service</h5>
+                    <p>We are your complete digital and development partner, offering comprehensive solutions for web development, app development, digital marketing, and creative services.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy & Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">App Development</a></li>
+                        <li><a href="services.html">Digital Marketing</a></li>
+                        <li><a href="services.html">Social Media</a></li>
+                        <li><a href="services.html">Video Production</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul>
+                        <li><i class="bi bi-geo-alt-fill"></i> ANANTAPUR, INDIA</li>
+                        <li><i class="bi bi-telephone-fill"></i> +91 7659872496</li>
+                        <li><i class="bi bi-envelope-fill"></i> ANANTADIGISERVICE@GMAIL.COM</li>
+                        <li><i class="bi bi-clock-fill"></i> Mon - Sat: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ananta Digi Service. All rights reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i></p>
+            </div>
+        </div>
+    </footer>
+</main>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="home.html" class="nav-link active">
+        <span class="icon-wrapper">
+            <i class="bi bi-house-door-fill"></i>
+        </span>
+        Home
+    </a>
+    <a href="services.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-hdd-stack-fill"></i>
+        </span>
+        Services
+    </a>
+    <a href="portfolio.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-briefcase-fill"></i>
+        </span>
+        Portfolio
+    </a>
+    <a href="contact.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-envelope-fill"></i>
+        </span>
+        Contact
+    </a>
+    <a href="about.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-person-circle"></i>
+        </span>
+        About
+    </a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        function adjustContentPadding() {
+            const navbar = document.querySelector('.navbar');
+            const bottomNav = document.querySelector('.bottom-nav');
+            const mainContent = document.querySelector('.main-content');
+
+            if (navbar && mainContent) {
+                const navbarHeight = navbar.offsetHeight;
+                mainContent.style.paddingTop = `${navbarHeight}px`;
+            }
+
+            if (bottomNav && mainContent) {
+                const bottomNavStyles = window.getComputedStyle(bottomNav);
+                if (bottomNavStyles.display !== 'none') {
+                    const bottomNavHeight = bottomNav.offsetHeight;
+                    mainContent.style.paddingBottom = `${bottomNavHeight}px`;
+                } else {
+                    mainContent.style.paddingBottom = '0px';
+                }
+            }
+        }
+
+        adjustContentPadding();
+        window.addEventListener('resize', adjustContentPadding);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Bottom navigation active link
+        const bottomNavLinks = document.querySelectorAll('.bottom-nav .nav-link');
+        bottomNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                bottomNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Sidebar toggle
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const exploreIcon = document.getElementById('explore-icon');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+            setTimeout(adjustContentPadding, 400);
+        }
+
+        exploreIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            toggleSidebar();
+        });
+
+        // Theme toggle
+        const desktopToggle = document.getElementById('desktop-theme-toggle');
+        const mobileToggle = document.getElementById('mobile-theme-toggle');
+        const body = document.body;
+
+        function setIcons() {
+            const isDarkMode = body.classList.contains('dark-mode');
+            const desktopIcon = desktopToggle.querySelector('i');
+            const mobileIcon = mobileToggle.querySelector('i');
+
+            if (isDarkMode) {
+                desktopIcon.classList.remove('bi-sun-fill');
+                desktopIcon.classList.add('bi-moon-fill');
+                mobileIcon.classList.remove('bi-sun-fill');
+                mobileIcon.classList.add('bi-moon-fill');
+            } else {
+                desktopIcon.classList.remove('bi-moon-fill');
+                desktopIcon.classList.add('bi-sun-fill');
+                mobileIcon.classList.remove('bi-moon-fill');
+                mobileIcon.classList.add('bi-sun-fill');
+            }
+        }
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+            setIcons();
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        setIcons();
+
+        desktopToggle.addEventListener('click', toggleTheme);
+        mobileToggle.addEventListener('click', toggleTheme);
+
+        // Animated Counter for Stats
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for Stats Animation
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Testimonials Carousel
+        const track = document.querySelector('.testimonials-track');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+        const indicators = document.querySelectorAll('.indicator');
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Event listeners for arrows
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+        }
+
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto-play carousel (optional - every 5 seconds)
+        let autoPlayInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto-play on hover
+        const carouselWrapper = document.querySelector('.testimonials-carousel-wrapper');
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+
+            carouselWrapper.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const carousel = document.querySelector('.testimonials-carousel');
+        if (carousel) {
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swiped left - go to next
+                    nextSlide();
+                } else {
+                    // Swiped right - go to previous
+                    prevSlide();
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

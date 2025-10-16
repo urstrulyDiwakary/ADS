@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms of Service - Ananta Digi Service - Read our terms and conditions.">
+    <meta name="keywords" content="terms of service, terms and conditions, legal, Ananta Digi Service">
+    <meta name="author" content="Ananta Digi Service">
+    <title>Terms of Service - Ananta Digi Service</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ads.png">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Theme Colors */
+        :root {
+            --primary-color: #6A0DAD;
+            --secondary-color: #1E90FF;
+            --accent-color: #FF6B35;
+            --dark-color: #2C3E50;
+            --light-color: #F8F9FA;
+            --text-color: #333;
+            --bg-color: #fff;
+        }
+
+        body.dark-mode {
+            --primary-color: #9B59B6;
+            --secondary-color: #3498DB;
+            --accent-color: #E67E22;
+            --dark-color: #E0E0E0;
+            --light-color: #2C3E50;
+            --text-color: #F8F9FA;
+            --bg-color: #1a1a1a;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #1A237E;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1030;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 30px;
+            margin-right: 10px;
+            display: inline;
+        }
+
+        .navbar-brand .brand-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .explore-icon {
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 15px;
+            display: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #mobile-theme-toggle {
+            display: none;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transition: padding 0.3s ease-in-out;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="50" fill="rgba(255,255,255,0.05)"/><circle cx="900" cy="400" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="1100" cy="150" r="60" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+            color: white;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* Content Styles */
+        .content-wrapper {
+            background: var(--bg-color);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .content-wrapper {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .content-wrapper h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .content-wrapper h2:first-child {
+            margin-top: 0;
+        }
+
+        .content-wrapper h3 {
+            color: var(--secondary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-wrapper p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: var(--text-color);
+        }
+
+        .content-wrapper ul, .content-wrapper ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+
+        .content-wrapper li {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .content-wrapper a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .content-wrapper a:hover {
+            color: var(--secondary-color);
+        }
+
+        .last-updated {
+            background: var(--light-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #666;
+        }
+
+        body.dark-mode .last-updated {
+            color: #aaa;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Bottom Navigation Styles */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: rgba(20, 28, 70, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+
+        body.dark-mode .bottom-nav {
+             background: rgba(10, 10, 20, 0.7);
+        }
+
+        .bottom-nav .nav-link {
+            color: orange;
+            text-align: center;
+            padding: 0;
+            flex: 1;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .bottom-nav .nav-link .icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 2px;
+            border-radius: 50%;
+        }
+
+        .bottom-nav .nav-link i {
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            z-index: 2;
+            color: white;
+        }
+
+        .bottom-nav .nav-link:hover {
+            color: white;
+        }
+
+        .bottom-nav .nav-link.active {
+            color: orange;
+        }
+
+        .bottom-nav .nav-link.active .icon-wrapper {
+            transform: translateY(-8px);
+            background: linear-gradient(145deg, #0052d4, #4364f7, #6fb1fc);
+            box-shadow: 0 0 20px 4px rgba(100, 150, 250, 0.6), 0 0 8px rgba(252, 246, 186, 0.5);
+        }
+
+        .bottom-nav .nav-link.active i {
+            color: white;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff, #f1f1f1);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1050;
+            padding-top: 20px;
+        }
+
+        body.dark-mode .sidebar {
+            background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.dark-mode .sidebar-header {
+            border-bottom: 1px solid #444;
+        }
+
+        .brand-name-sidebar {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+        }
+
+        .sidebar a {
+            color: var(--text-color);
+            padding: 15px 25px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        body.dark-mode .sidebar a {
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar a:hover {
+            background: rgba(106, 13, 173, 0.05);
+            padding-left: 30px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .explore-icon {
+                display: block;
+            }
+            #mobile-theme-toggle {
+                display: flex;
+            }
+            .navbar-collapse {
+                display: none !important;
+            }
+            .bottom-nav {
+                display: flex;
+            }
+            .footer {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            #desktop-theme-toggle .theme-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .sidebar {
+                width: 250px;
+                left: -250px;
+            }
+
+            .content-wrapper {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+
+            .content-wrapper {
+                padding: 25px 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                height: 28px;
+                margin-right: 8px;
+            }
+        }
+
+        @media (max-width: 327px) {
+            .sidebar {
+                width: 240px;
+                left: -240px;
+            }
+        }
+
+        @media (max-width: 315px) {
+            .brand-name {
+                display: inline;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                height: 24px;
+                margin-right: 6px;
+            }
+            .explore-icon {
+                font-size: 1.1rem;
+                margin-right: 8px;
+            }
+        }
+
+        @media (max-width: 244px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .explore-icon {
+                font-size: 1rem;
+            }
+            .bottom-nav .nav-link {
+                padding: 8px 0;
+                font-size: 0.8rem;
+            }
+            .bottom-nav .nav-link i {
+                font-size: 1rem;
+            }
+            .hero-section h1 { font-size: 1.8rem; }
+            .hero-section p { font-size: 1rem; }
+        }
+
+        /* Page Transition */
+        .page-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <div class="navbar-left">
+            <a id="explore-icon" class="explore-icon">
+                <i class="bi bi-list"></i>
+            </a>
+            <a class="navbar-brand" href="home.html">
+                <img src="images/ads.png" alt="Ananta Digi Service Logo" class="brand-logo">
+                <span class="brand-name">Ananta Digi Service</span>
+            </a>
+        </div>
+
+        <div id="mobile-theme-toggle" class="theme-toggle">
+            <i class="bi bi-sun-fill"></i>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="portfolio.html">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item" id="desktop-theme-toggle">
+                    <a class="theme-toggle nav-link">
+                        <i class="bi bi-sun-fill"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <span class="brand-name-sidebar">Ananta Digi Service</span>
+    </div>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+</div>
+<div class="sidebar-overlay"></div>
+
+<main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1>Terms of Service</h1>
+                <p>Please read these terms carefully before using our services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="section-padding">
+        <div class="container">
+            <article class="content-wrapper">
+                <div class="last-updated">
+                    <i class="bi bi-calendar-check"></i> Last Updated: October 09, 2025
+                </div>
+
+                <h2>1. Introduction</h2>
+                <p>Welcome to Ananta Digi Service ("Company", "we", "our", "us"). These Terms of Service ("Terms", "Terms of Service") govern your use of our website located at anantadigii.com (together or individually "Service") operated by Ananta Digi Service.</p>
+                <p>Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard and disclose information that results from your use of our web pages.</p>
+                <p>Your agreement with us includes these Terms and our Privacy Policy ("Agreements"). You acknowledge that you have read and understood Agreements, and agree to be bound by them.</p>
+                <p>If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at ANANTADIGISERVICE@GMAIL.COM so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use Service.</p>
+
+                <h2>2. User Responsibilities</h2>
+                <p>By accessing and using our Service, you represent and warrant that:</p>
+                <ul>
+                    <li>You are at least 18 years of age and have the legal capacity to enter into these Terms</li>
+                    <li>All information you provide to us is accurate, current, and complete</li>
+                    <li>You will maintain the accuracy of such information and promptly update it as necessary</li>
+                    <li>You have the legal capacity and you agree to comply with these Terms of Service</li>
+                    <li>You will not access the Service through automated or non-human means, whether through a bot, script or otherwise</li>
+                    <li>You will not use the Service for any illegal or unauthorized purpose</li>
+                    <li>Your use of the Service will not violate any applicable law or regulation</li>
+                </ul>
+
+                <h2>3. Prohibited Activities</h2>
+                <p>You may not access or use the Service for any purpose other than that for which we make the Service available. The Service may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.</p>
+
+                <h3>As a user of the Service, you agree not to:</h3>
+                <ol>
+                    <li>Systematically retrieve data or other content from the Service to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us</li>
+                    <li>Make any unauthorized use of the Service, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email, or creating user accounts by automated means or under false pretenses</li>
+                    <li>Use the Service to advertise or offer to sell goods and services without our express written consent</li>
+                    <li>Circumvent, disable, or otherwise interfere with security-related features of the Service</li>
+                    <li>Engage in unauthorized framing of or linking to the Service</li>
+                    <li>Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords</li>
+                    <li>Make improper use of our support services or submit false reports of abuse or misconduct</li>
+                    <li>Engage in any automated use of the system, such as using scripts to send comments or messages</li>
+                    <li>Interfere with, disrupt, or create an undue burden on the Service or the networks or services connected to the Service</li>
+                    <li>Attempt to impersonate another user or person or use the username of another user</li>
+                    <li>Use any information obtained from the Service in order to harass, abuse, or harm another person</li>
+                    <li>Use the Service as part of any effort to compete with us or otherwise use the Service and/or the Content for any revenue-generating endeavor or commercial enterprise</li>
+                    <li>Decipher, decompile, disassemble, or reverse engineer any of the software comprising or in any way making up a part of the Service</li>
+                    <li>Harass, annoy, intimidate, or threaten any of our employees or agents engaged in providing any portion of the Service to you</li>
+                    <li>Delete the copyright or other proprietary rights notice from any Content</li>
+                    <li>Upload or transmit (or attempt to upload or to transmit) viruses, Trojan horses, or other material that interferes with any party's uninterrupted use of the Service</li>
+                </ol>
+
+                <h2>4. Intellectual Property Rights</h2>
+                <p>The Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Ananta Digi Service and its licensors. The Service is protected by copyright, trademark, and other laws of both the country and foreign countries.</p>
+                <p>Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Ananta Digi Service.</p>
+
+                <h3>License to Use Service</h3>
+                <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, non-sublicensable license to access and use the Service for your personal, non-commercial use. This license does not include any right to:</p>
+                <ul>
+                    <li>Resale or commercial use of the Service or its contents</li>
+                    <li>Collection and use of any product listings, descriptions, or prices</li>
+                    <li>Any derivative use of the Service or its contents</li>
+                    <li>Any downloading or copying of account information for the benefit of another merchant</li>
+                    <li>Any use of data mining, robots, or similar data gathering and extraction tools</li>
+                </ul>
+
+                <h2>5. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by applicable law, in no event shall Ananta Digi Service, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
+                <ul>
+                    <li>Your access to or use of or inability to access or use the Service</li>
+                    <li>Any conduct or content of any third party on the Service</li>
+                    <li>Any content obtained from the Service</li>
+                    <li>Unauthorized access, use or alteration of your transmissions or content</li>
+                </ul>
+                <p>In no event shall our total liability to you for all damages, losses, and causes of action exceed the amount paid by you, if any, for accessing our Service.</p>
+
+                <h2>6. Disclaimer of Warranties</h2>
+                <p>The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance.</p>
+                <p>Ananta Digi Service, its subsidiaries, affiliates, and its licensors do not warrant that:</p>
+                <ul>
+                    <li>The Service will function uninterrupted, secure or available at any particular time or location</li>
+                    <li>Any errors or defects will be corrected</li>
+                    <li>The Service is free of viruses or other harmful components</li>
+                    <li>The results of using the Service will meet your requirements</li>
+                </ul>
+
+                <h2>7. Termination</h2>
+                <p>We may terminate or suspend your access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of the Terms.</p>
+                <p>All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</p>
+                <p>If you wish to terminate your account, you may simply discontinue using the Service or contact us at ANANTADIGISERVICE@GMAIL.COM.</p>
+
+                <h2>8. Indemnification</h2>
+                <p>You agree to defend, indemnify and hold harmless Ananta Digi Service and its licensee and licensors, and their employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees), resulting from or arising out of:</p>
+                <ul>
+                    <li>Your use and access of the Service</li>
+                    <li>Your violation of any term of these Terms</li>
+                    <li>Your violation of any third party right, including without limitation any copyright, property, or privacy right</li>
+                </ul>
+
+                <h2>9. Governing Law</h2>
+                <p>These Terms shall be governed and construed in accordance with the laws of India, which governing law applies to agreement without regard to its conflict of law provisions.</p>
+                <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
+
+                <h2>10. Changes to Terms</h2>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                <p>By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Service.</p>
+
+                <h2>11. Contact Us</h2>
+                <p>If you have any questions about these Terms, please contact us:</p>
+                <ul>
+                    <li>By email: ANANTADIGISERVICE@GMAIL.COM</li>
+                    <li>By phone: +91 7659872496</li>
+                    <li>By visiting our contact page: <a href="contact.html">Contact Us</a></li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>About Ananta Digi Service</h5>
+                    <p>We are your complete digital and development partner, offering comprehensive solutions for web development, app development, digital marketing, and creative services.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                    <h5 class="mt-3">Our Services</h5>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">App Development</a></li>
+                        <li><a href="services.html">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul>
+                        <li><i class="bi bi-geo-alt-fill"></i> ANANTAPUR, INDIA</li>
+                        <li><i class="bi bi-telephone-fill"></i> +91 7659872496</li>
+                        <li><i class="bi bi-envelope-fill"></i> ANANTADIGISERVICE@GMAIL.COM</li>
+                        <li><i class="bi bi-clock-fill"></i> Mon - Sat: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ananta Digi Service. All rights reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i></p>
+            </div>
+        </div>
+    </footer>
+</main>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="home.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-house-door-fill"></i>
+        </span>
+        Home
+    </a>
+    <a href="services.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-hdd-stack-fill"></i>
+        </span>
+        Services
+    </a>
+    <a href="portfolio.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-briefcase-fill"></i>
+        </span>
+        Portfolio
+    </a>
+    <a href="contact.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-envelope-fill"></i>
+        </span>
+        Contact
+    </a>
+    <a href="about.html" class="nav-link">
+        <span class="icon-wrapper">
+            <i class="bi bi-person-circle"></i>
+        </span>
+        About
+    </a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        function adjustContentPadding() {
+            const navbar = document.querySelector('.navbar');
+            const bottomNav = document.querySelector('.bottom-nav');
+            const mainContent = document.querySelector('.main-content');
+
+            if (navbar && mainContent) {
+                const navbarHeight = navbar.offsetHeight;
+                mainContent.style.paddingTop = `${navbarHeight}px`;
+            }
+
+            if (bottomNav && mainContent) {
+                const bottomNavStyles = window.getComputedStyle(bottomNav);
+                if (bottomNavStyles.display !== 'none') {
+                    const bottomNavHeight = bottomNav.offsetHeight;
+                    mainContent.style.paddingBottom = `${bottomNavHeight}px`;
+                } else {
+                    mainContent.style.paddingBottom = '0px';
+                }
+            }
+        }
+
+        adjustContentPadding();
+        window.addEventListener('resize', adjustContentPadding);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Bottom navigation active link
+        const bottomNavLinks = document.querySelectorAll('.bottom-nav .nav-link');
+        bottomNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                bottomNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Sidebar toggle
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const exploreIcon = document.getElementById('explore-icon');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+            setTimeout(adjustContentPadding, 400);
+        }
+
+        exploreIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            toggleSidebar();
+        });
+
+        // Theme toggle
+        const desktopToggle = document.getElementById('desktop-theme-toggle');
+        const mobileToggle = document.getElementById('mobile-theme-toggle');
+        const body = document.body;
+
+        function setIcons() {
+            const isDarkMode = body.classList.contains('dark-mode');
+            const desktopIcon = desktopToggle.querySelector('i');
+            const mobileIcon = mobileToggle.querySelector('i');
+
+            if (isDarkMode) {
+                desktopIcon.classList.remove('bi-sun-fill');
+                desktopIcon.classList.add('bi-moon-fill');
+                mobileIcon.classList.remove('bi-sun-fill');
+                mobileIcon.classList.add('bi-moon-fill');
+            } else {
+                desktopIcon.classList.remove('bi-moon-fill');
+                desktopIcon.classList.add('bi-sun-fill');
+                mobileIcon.classList.remove('bi-moon-fill');
+                mobileIcon.classList.add('bi-sun-fill');
+            }
+        }
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+            setIcons();
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        setIcons();
+
+        desktopToggle.addEventListener('click', toggleTheme);
+        mobileToggle.addEventListener('click', toggleTheme);
+    });
+</script>
+</body>
+</html>
