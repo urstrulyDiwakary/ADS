@@ -292,4 +292,31 @@ public class ApiController {
             return ResponseEntity.internalServerError().body(response);
         }
     }
+
+    // JSON API endpoint for contact form submissions
+    @PostMapping("/contact")
+    public ResponseEntity<Map<String, Object>> submitContactJson(@RequestBody Map<String, String> contactData) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            ContactSubmission submission = new ContactSubmission();
+            submission.setName(contactData.get("name"));
+            submission.setEmail(contactData.get("email"));
+            submission.setPhone(contactData.get("phone"));
+            submission.setService(contactData.get("service"));
+            submission.setMessage(contactData.get("message"));
+            submission.setDate(java.time.LocalDateTime.now());
+
+            contactSubmissionService.saveSubmission(submission);
+
+            response.put("success", true);
+            response.put("message", "Thank you for your message! We'll get back to you soon.");
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "Error processing your request. Please try again later.");
+            return ResponseEntity.internalServerError().body(response);
+        }
+    }
 }
