@@ -8,6 +8,8 @@ services:
     envVars:
       - key: PORT
         value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
       - key: ADMIN_DEFAULT_EMAIL
         value: admin@adscompany.com
       - key: ADMIN_DEFAULT_PASSWORD
@@ -16,3 +18,7 @@ services:
         value: admin
       - key: ADMIN_DEFAULT_FULLNAME
         value: System Administrator
+
+databases:
+  - name: ADS-postgres
+    plan: free

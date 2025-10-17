@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ads.admin.model.ContactSubmission;
 import com.ads.admin.repository.ContactSubmissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -19,57 +23,122 @@ public class PublicController {
     @Autowired
     private ContactSubmissionRepository contactSubmissionRepository;
 
-    // Home page - serves HOME.html
+    // Home page - serves HOME.html directly
     @GetMapping("/")
-    public String home() {
-        return "redirect:/HOME.html";
+    @ResponseBody
+    public ResponseEntity<Resource> home() {
+        try {
+            Resource resource = new ClassPathResource("static/HOME.html");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/home")
-    public String homeAlias() {
-        return "redirect:/HOME.html";
+    @ResponseBody
+    public ResponseEntity<Resource> homeAlias() {
+        return home();
     }
 
     // About page
     @GetMapping("/about")
-    public String about() {
-        return "redirect:/about.html";
+    @ResponseBody
+    public ResponseEntity<Resource> about() {
+        try {
+            Resource resource = new ClassPathResource("static/about.html");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Contact page
     @GetMapping("/contact")
-    public String contact() {
-        return "redirect:/CONTACT.HTML";
+    @ResponseBody
+    public ResponseEntity<Resource> contact() {
+        try {
+            Resource resource = new ClassPathResource("static/CONTACT.HTML");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Services page
     @GetMapping("/services")
-    public String services() {
-        return "redirect:/SERVICES.HTML";
+    @ResponseBody
+    public ResponseEntity<Resource> services() {
+        try {
+            Resource resource = new ClassPathResource("static/SERVICES.HTML");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Portfolio page
     @GetMapping("/portfolio")
-    public String portfolio() {
-        return "redirect:/PORTFOLIO.HTML";
+    @ResponseBody
+    public ResponseEntity<Resource> portfolio() {
+        try {
+            Resource resource = new ClassPathResource("static/PORTFOLIO.HTML");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Jobs page
     @GetMapping("/jobs")
-    public String jobs() {
-        return "redirect:/jobs.html";
+    @ResponseBody
+    public ResponseEntity<Resource> jobs() {
+        try {
+            Resource resource = new ClassPathResource("static/jobs.html");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Privacy page
     @GetMapping("/privacy")
-    public String privacy() {
-        return "redirect:/PRIVACY.html";
+    @ResponseBody
+    public ResponseEntity<Resource> privacy() {
+        try {
+            Resource resource = new ClassPathResource("static/PRIVACY.html");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Terms page
     @GetMapping("/terms")
-    public String terms() {
-        return "redirect:/TERMS.html";
+    @ResponseBody
+    public ResponseEntity<Resource> terms() {
+        try {
+            Resource resource = new ClassPathResource("static/TERMS.html");
+            return ResponseEntity.ok()
+                    .contentType(MediaType.TEXT_HTML)
+                    .body(resource);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Handle contact form submission
@@ -100,7 +169,7 @@ public class PublicController {
 
         } catch (Exception e) {
             response.put("success", false);
-            response.put("message", "Sorry, there was an error submitting your message. Please try again.");
+            response.put("message", "Sorry, there was an error processing your request. Please try again.");
         }
 
         return response;
