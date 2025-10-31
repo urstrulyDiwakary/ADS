@@ -1,5 +1,7 @@
 package com.ads.admin.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -37,19 +39,28 @@ public class Admin {
     @Column(name = "enabled", nullable = false)
     private Boolean enabled = true;
 
-    @Column(name = "created_date", nullable = false)
+    @Column(name = "created_date")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime createdDate;
 
     @Column(name = "last_login")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime lastLogin;
 
     @PrePersist
     protected void onCreate() {
-        createdDate = LocalDateTime.now();
+        if (createdDate == null) {
+            createdDate = LocalDateTime.now();
+        }
     }
 
     // Default constructor
-    public Admin() {}
+    public Admin() {
+        this.createdDate = LocalDateTime.now();
+        this.enabled = true;
+    }
 
     // Constructor with parameters
     public Admin(String username, String password, String email, String fullName) {

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Submissions - ADS Admin Panel</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/ads.png">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
@@ -67,9 +71,13 @@
             gap: 12px;
         }
 
-        .navbar h1::before {
-            content: "📋";
-            font-size: 24px;
+        .navbar-logo {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
         }
 
         .nav-links {
@@ -334,12 +342,13 @@
         }
 
         .submission-message {
-            max-width: 300px;
+            max-width: 400px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             color: var(--text-secondary);
             font-size: 14px;
+            display: block;
         }
 
         .submission-date {
@@ -550,12 +559,14 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <h1>Contact Submissions</h1>
+        <h1>
+            <img th:src="@{/images/ads.png}" src="/images/ads.png" alt="ADS Logo" class="navbar-logo">
+            Contact Submissions
+        </h1>
         <div class="nav-links">
             <a href="/admin/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
             <a href="/admin/submissions" class="active"><i class="fas fa-envelope"></i> Submissions</a>
             <form method="post" action="/admin/logout" style="display: inline; margin: 0;">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <button type="submit" style="color: white; text-decoration: none; padding: 10px 20px; border-radius: var(--border-radius); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: inherit; font-size: 14px;">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
@@ -675,6 +686,50 @@
     <div id="alertContainer" style="position: fixed; top: 20px; right: 20px; z-index: 1001;"></div>
 
     <script>
+        // ============================================
+        // CSRF Token Utility Functions
+        // ============================================
+        function getCsrfToken() {
+            // Try to get from cookie first (XSRF-TOKEN)
+            const cookieValue = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('XSRF-TOKEN='));
+
+            if (cookieValue) {
+                return decodeURIComponent(cookieValue.split('=')[1]);
+            }
+
+            // Fallback: try to get from meta tag
+            const metaTag = document.querySelector('meta[name="_csrf"]');
+            if (metaTag) {
+                return metaTag.getAttribute('content');
+            }
+
+            console.warn('CSRF token not found');
+            return null;
+        }
+
+        function getCsrfHeader() {
+            const headerName = document.querySelector('meta[name="_csrf_header"]');
+            return headerName ? headerName.getAttribute('content') : 'X-XSRF-TOKEN';
+        }
+
+        function getAuthHeaders() {
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+
+            const csrfToken = getCsrfToken();
+            if (csrfToken) {
+                headers[getCsrfHeader()] = csrfToken;
+            }
+
+            return headers;
+        }
+
+        // ============================================
+        // Submissions Management
+        // ============================================
         let allSubmissions = [];
         let filteredSubmissions = [];
         let currentSubmissionId = null;
@@ -688,7 +743,9 @@
         async function loadSubmissions() {
             showLoading(true);
             try {
-                const response = await fetch('/api/contact/submissions');
+                const response = await fetch('/api/contact/submissions', {
+                    headers: getAuthHeaders()
+                });
                 if (response.ok) {
                     allSubmissions = await response.json();
                     filteredSubmissions = [...allSubmissions];
@@ -722,14 +779,18 @@
             tableContainer.style.display = 'block';
             emptyState.style.display = 'none';
 
-            tbody.innerHTML = filteredSubmissions.map(submission => `
+            tbody.innerHTML = filteredSubmissions.map(submission => {
+                const message = submission.message || 'No message';
+                const truncatedMessage = message.length > 20? message.substring(0, 20) + '...' : message;
+
+                return `
                 <tr>
                     <td><span class="submission-id">#${submission.id}</span></td>
                     <td><span class="submission-name">${escapeHtml(submission.name)}</span></td>
                     <td><span class="submission-email">${escapeHtml(submission.email)}</span></td>
                     <td><span class="submission-phone">${escapeHtml(submission.phone || 'N/A')}</span></td>
                     <td><span class="service-badge">${escapeHtml(submission.service || 'Other')}</span></td>
-                    <td><span class="submission-message">${escapeHtml(submission.message || 'No message')}</span></td>
+                    <td><span class="submission-message" title="${escapeHtml(message)}">${escapeHtml(truncatedMessage)}</span></td>
                     <td><span class="submission-date">${formatDate(submission.date)}</span></td>
                     <td>
                         <div class="actions">
@@ -742,7 +803,8 @@
                         </div>
                     </td>
                 </tr>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // Show loading state
@@ -825,7 +887,9 @@
         // View submission details
         async function viewSubmission(id) {
             try {
-                const response = await fetch(`/api/contact/submissions/${id}`);
+                const response = await fetch(`/api/contact/submissions/${id}`, {
+                    headers: getAuthHeaders()
+                });
                 if (response.ok) {
                     const submission = await response.json();
                     showSubmissionModal(submission);
@@ -901,7 +965,8 @@
         async function deleteSubmissionById(id) {
             try {
                 const response = await fetch(`/api/contact/submissions/${id}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
                 });
 
                 if (response.ok) {

@@ -76,6 +76,7 @@ public class DataInitializer implements CommandLineRunner {
         }
     }
 
+
     private void migrateJsonDataToDatabase() {
         try {
             // Check if migration marker file exists

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - ADS Admin Panel</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/ads.png">
+
     <style>
         * {
             margin: 0;
@@ -823,6 +827,11 @@
             top: 50%;
             transform: translateY(-50%);
             pointer-events: none;
+            font-size: 20px;
+            z-index: 11;
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: inline-block !important;
         }
 
         #eyeOpen, #eyeClosed {
@@ -950,109 +959,121 @@
 
         console.log('Form visibility forced. Form groups found:', formGroups.length);
         console.log('Inputs found:', inputs.length);
-    });
 
-    // Check URL parameters and show alerts conditionally
-    const urlParams = new URLSearchParams(window.location.search);
-    const errorAlert = document.getElementById('errorAlert');
-    const logoutAlert = document.getElementById('logoutAlert');
-    const iconCircle = document.querySelector('.icon-circle');
+        // Check URL parameters and show alerts conditionally
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorAlert = document.getElementById('errorAlert');
+        const logoutAlert = document.getElementById('logoutAlert');
+        const iconCircle = document.querySelector('.icon-circle');
 
-    // Show error alert only if error parameter exists
-    if (urlParams.has('error')) {
-        errorAlert.classList.add('show');
-        // Shake the lock on error
-        iconCircle.classList.add('shake');
-        setTimeout(() => {
-            iconCircle.classList.remove('shake');
-        }, 500);
-        // Clean up URL after showing the error message
-        setTimeout(() => {
-            window.history.replaceState({}, document.title, '/admin/login');
-        }, 100);
-    }
+        // Show error alert only if error parameter exists
+        if (urlParams.has('error') && errorAlert) {
+            errorAlert.classList.add('show');
+            // Shake the lock on error
+            if (iconCircle) {
+                iconCircle.classList.add('shake');
+                setTimeout(() => {
+                    iconCircle.classList.remove('shake');
+                }, 500);
+            }
+            // Clean up URL after showing the error message
+            setTimeout(() => {
+                window.history.replaceState({}, document.title, '/admin/login');
+            }, 100);
+        }
 
-    // Show logout alert only if logout parameter exists
-    if (urlParams.has('logout')) {
-        logoutAlert.classList.add('show');
-        // Clean up URL after showing the message
-        setTimeout(() => {
-            window.history.replaceState({}, document.title, '/admin/login');
-        }, 100);
-    }
+        // Show logout alert only if logout parameter exists
+        if (urlParams.has('logout') && logoutAlert) {
+            logoutAlert.classList.add('show');
+            // Clean up URL after showing the message
+            setTimeout(() => {
+                window.history.replaceState({}, document.title, '/admin/login');
+            }, 100);
+        }
 
-    // Check for success parameter (you'll need to add this to your backend)
-    if (urlParams.has('success')) {
-        // Unlock animation on successful login
-        iconCircle.classList.add('unlocked');
-        // Redirect to dashboard after animation
-        setTimeout(() => {
-            window.location.href = '/admin/dashboard';
-        }, 800);
-    }
+        // Check for success parameter (you'll need to add this to your backend)
+        if (urlParams.has('success') && iconCircle) {
+            // Unlock animation on successful login
+            iconCircle.classList.add('unlocked');
+            // Redirect to dashboard after animation
+            setTimeout(() => {
+                window.location.href = '/admin/dashboard';
+            }, 800);
+        }
 
-    // Create bubble effect
-    const bubblesContainer = document.getElementById('bubbles');
-    for (let i = 0; i < 15; i++) {
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        const size = Math.random() * 60 + 20;
-        bubble.style.width = size + 'px';
-        bubble.style.height = size + 'px';
-        bubble.style.left = Math.random() * 100 + '%';
-        bubble.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        bubble.style.animationDelay = Math.random() * 5 + 's';
-        bubblesContainer.appendChild(bubble);
-    }
+        // Create bubble effect
+        const bubblesContainer = document.getElementById('bubbles');
+        if (bubblesContainer) {
+            for (let i = 0; i < 15; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 60 + 20;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                bubble.style.animationDelay = Math.random() * 5 + 's';
+                bubblesContainer.appendChild(bubble);
+            }
+        }
 
-    // Password visibility toggle
-    const passwordInput = document.getElementById('password');
-    const togglePassword = document.getElementById('togglePassword');
-    const eyeOpen = document.getElementById('eyeOpen');
-    const eyeClosed = document.getElementById('eyeClosed');
+        // Password visibility toggle
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+        const eyeOpen = document.getElementById('eyeOpen');
+        const eyeClosed = document.getElementById('eyeClosed');
 
-    // Initial state: password hidden, closed eye visible
-    eyeOpen.style.display = 'none';
-    eyeClosed.style.display = 'block';
-
-    togglePassword.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent any form submission
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-
-        // Toggle eye icons
-        if (type === 'password') {
+        if (passwordInput && togglePassword && eyeOpen && eyeClosed) {
+            // Initial state: password hidden, closed eye visible
             eyeOpen.style.display = 'none';
             eyeClosed.style.display = 'block';
-        } else {
-            eyeOpen.style.display = 'block';
-            eyeClosed.style.display = 'none';
+
+            togglePassword.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent any form submission
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Toggle eye icons
+                if (type === 'password') {
+                    eyeOpen.style.display = 'none';
+                    eyeClosed.style.display = 'block';
+                } else {
+                    eyeOpen.style.display = 'block';
+                    eyeClosed.style.display = 'none';
+                }
+            });
         }
-    });
 
-    // Lock icon animation and normal form submit
-    const loginForm = document.getElementById('loginForm');
-    const loginBtn = document.getElementById('loginBtn');
-    loginForm.addEventListener('submit', function() {
-        // Briefly show unlock animation on submit
-        iconCircle.classList.add('unlocked');
-        // Show loading state
-        loginBtn.classList.add('loading');
-        loginBtn.disabled = true;
-        // Allow normal form submission to Spring Security
-    });
+        // Lock icon animation and normal form submit
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function() {
+                // Briefly show unlock animation on submit
+                if (iconCircle) {
+                    iconCircle.classList.add('unlocked');
+                }
+                // Show loading state
+                if (loginBtn) {
+                    loginBtn.classList.add('loading');
+                    loginBtn.disabled = true;
+                }
+                // Allow normal form submission to Spring Security
+            });
+        }
 
-    // Input focus effects
-    const inputs = document.querySelectorAll('input');
-    inputs.forEach(input => {
-        input.addEventListener('input', function() {
-            if (this.value.length > 0) {
-                this.style.fontWeight = '600';
-            } else {
-                this.style.fontWeight = '500';
-            }
+        // Input focus effects - REMOVED DUPLICATE DECLARATION
+        // Using the inputs variable already declared in DOMContentLoaded
+        document.querySelectorAll('input').forEach(function(input) {
+            input.addEventListener('input', function() {
+                if (this.value.length > 0) {
+                    this.style.fontWeight = '600';
+                } else {
+                    this.style.fontWeight = '500';
+                }
+            });
         });
-    });
+    }); // End of DOMContentLoaded
 </script>
 </body>
 </html>

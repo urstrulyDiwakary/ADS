@@ -1,5 +1,6 @@
 package com.ads.admin.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -25,6 +26,7 @@ public class ContactSubmission {
     private String message;
 
     @Column(name = "submission_date", nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime date;
 
     // Constructors

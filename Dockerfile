@@ -1,12 +1,44 @@
 # Build stage
-FROM maven:3.9-eclipse-temurin-21 AS builder
+FROM maven:3.9-eclipse-temurin-17 AS builder
 WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
+
+# Copy dependency files first for better caching
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+# Copy source code
+COPY src ./src
+
+# Build the application
+RUN mvn clean package -DskipTests -Pproduction
 
 # Runtime stage
-FROM openjdk:21-jdk
+FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
-COPY --from=builder /app/target/ads-admin-0.0.1-SNAPSHOT.jar app.jar
+
+# Install curl for health checks and create non-root user
+RUN apt-get update && apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/* && \
+    groupadd -r appuser && useradd -r -g appuser appuser && \
+    mkdir -p /app/logs /var/log/ads && \
+    chown -R appuser:appuser /app /var/log/ads
+
+# Copy JAR file
+COPY --from=builder /app/target/ads-admin-1.0.0.jar app.jar
+RUN chown appuser:appuser app.jar
+
+# Switch to non-root user
+USER appuser
+
+# Health check using actuator endpoint
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:8080/actuator/health || exit 1
+
+# Expose port
 EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+
+# JVM optimizations for container and production
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC -XX:+DisableExplicitGC -Djava.security.egd=file:/dev/./urandom"
+
+# Start application with production profile
+CMD ["sh", "-c", "java $JAVA_OPTS -Dspring.profiles.active=prod -jar app.jar"]

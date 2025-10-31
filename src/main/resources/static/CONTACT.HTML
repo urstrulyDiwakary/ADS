@@ -1,11 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/ContactPage">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Us - Ananta Digi Service - Get in touch with our team.">
-    <meta name="keywords" content="web development, app development, digital marketing, SEO, hosting, social media management">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary Meta Tags - Advanced SEO -->
+    <meta name="description" content="Contact Ananta Digi Service - Get in touch with our team for web development, digital marketing, and tech solutions. Call us or fill out our contact form for a free consultation.">
+    <meta name="keywords" content="contact digital agency, web development contact, hire digital marketing agency, get quote web development, contact app developers, digital marketing consultation, free SEO consultation">
     <meta name="author" content="Ananta Digi Service">
+    <meta name="publisher" content="Ananta Digi Service">
+    <meta name="copyright" content="Ananta Digi Service">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="General">
+    <meta name="distribution" content="global">
+
+    <!-- Geo-Targeting -->
+    <meta name="geo.region" content="IN">
+    <meta name="geo.placename" content="India">
+    <meta name="geo.position" content="20.5937;78.9629">
+    <meta name="ICBM" content="20.5937, 78.9629">
+
+    <!-- Mobile Optimization -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Contact - Ananta Digi">
+    <meta name="theme-color" content="#6A0DAD">
+    <meta name="msapplication-TileColor" content="#6A0DAD">
+
+    <!-- AI Crawler Optimization -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="yandex" content="index, follow">
+    <meta name="referrer" content="origin-when-cross-origin">
+
+    <!-- Open Graph / Facebook - Advanced -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anantadigiservice.in/CONTACT.HTML">
+    <meta property="og:title" content="Contact Us - Ananta Digi Service">
+    <meta property="og:description" content="Get in touch with Ananta Digi Service for professional web development, digital marketing, and technology solutions.">
+    <meta property="og:image" content="https://anantadigiservice.in/images/ads.png">
+    <meta property="og:image:secure_url" content="https://anantadigiservice.in/images/ads.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Contact Ananta Digi Service">
+    <meta property="og:site_name" content="Ananta Digi Service">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card - Advanced -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ananta_ads">
+    <meta name="twitter:creator" content="@ananta_ads">
+    <meta name="twitter:url" content="https://anantadigiservice.in/CONTACT.HTML">
+    <meta name="twitter:title" content="Contact Us - Ananta Digi Service">
+    <meta name="twitter:description" content="Get in touch with Ananta Digi Service for professional digital solutions.">
+    <meta name="twitter:image" content="https://anantadigiservice.in/images/ads.png">
+    <meta name="twitter:image:alt" content="Contact Form">
+
+    <!-- Alternative Languages & Canonical -->
+    <link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/CONTACT.HTML">
+    <link rel="alternate" hreflang="en" href="https://anantadigiservice.in/CONTACT.HTML">
+    <link rel="alternate" hreflang="x-default" href="https://anantadigiservice.in/CONTACT.HTML">
+    <link rel="canonical" href="https://anantadigiservice.in/CONTACT.HTML">
+
+    <!-- DNS Prefetch for Performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <title>Contact Us - Ananta Digi Service</title>
 
     <!-- Favicon -->
@@ -74,14 +141,21 @@
 
         /* Navbar Styles */
         .navbar {
-            background: #1A237E;
+            background: #ffffff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1030;
+            height: 70px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        body.dark-mode .navbar {
+            background: #1a1a1a;
+            box-shadow: 0 2px 10px rgba(255,255,255,0.1);
         }
 
         .navbar .container {
@@ -102,18 +176,23 @@
         .navbar-brand {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: white !important;
+            font-size: 2rem;
+            color: #1A237E !important;
             display: flex;
             align-items: center;
             min-width: 0;
-            text-decoration: none;
+        }
+
+        body.dark-mode .navbar-brand {
+            color: #F8F9FA !important;
         }
 
         .brand-logo {
-            height: 30px;
-            margin-right: 10px;
-            display: inline;
+            height: 98px;
+            width: 98px;
+            display: inline-block;
+            object-fit: contain;
+            vertical-align: middle;
         }
 
         .navbar-brand .brand-name {
@@ -122,16 +201,43 @@
             text-overflow: ellipsis;
         }
 
+        /* Desktop Brand Name - visible only on desktop */
+        .brand-name-desktop {
+            display: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1A237E;
+            margin-left: 15px;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        body.dark-mode .brand-name-desktop {
+            color: #F8F9FA;
+        }
+
+        /* Show brand name only on desktop view */
+        @media (min-width: 1025px) {
+            .brand-name-desktop {
+                display: inline-block;
+            }
+        }
+
         .explore-icon {
-            color: white;
+            color: #1A237E;
             font-size: 1.2rem;
             cursor: pointer;
             margin-right: 15px;
             display: none;
         }
 
+        body.dark-mode .explore-icon {
+            color: #F8F9FA;
+        }
+
         .navbar-nav .nav-link {
-            color: white !important;
+            color: #1A237E !important;
             font-weight: 500;
             margin: 0 10px;
             transition: all 0.3s ease;
@@ -139,9 +245,18 @@
             text-decoration: none;
         }
 
+        body.dark-mode .navbar-nav .nav-link {
+            color: #F8F9FA !important;
+        }
+
         .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link.active {
-            color: white !important;
+            color: #6A0DAD !important;
+        }
+
+        body.dark-mode .navbar-nav .nav-link:hover,
+        body.dark-mode .navbar-nav .nav-link.active {
+            color: #9B59B6 !important;
         }
 
         .navbar-nav .nav-link::after {
@@ -162,7 +277,7 @@
 
         .theme-toggle {
             cursor: pointer;
-            color: white;
+            color: #1A237E;
             font-size: 1.2rem;
             display: none;
             align-items: center;
@@ -170,10 +285,18 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .theme-toggle:hover {
+            background-color: rgba(26, 35, 126, 0.1);
+        }
+
+        body.dark-mode .theme-toggle {
+            color: #F8F9FA;
+        }
+
+        body.dark-mode .theme-toggle:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
 
@@ -213,12 +336,56 @@
 
         .sidebar-header {
             padding: 20px;
+            padding-top: 60px;
             text-align: center;
             border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            position: relative;
         }
 
         body.dark-mode .sidebar-header {
             border-bottom: 1px solid #444;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(106, 13, 173, 0.3);
+            z-index: 10;
+        }
+
+        .sidebar-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 4px 12px rgba(106, 13, 173, 0.5);
+        }
+
+        .sidebar-close i {
+            font-size: 1.2rem;
+        }
+
+        .sidebar-logo {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(2px 2px 4px rgba(106, 13, 173, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-logo:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .brand-name-sidebar {
@@ -227,6 +394,23 @@
             font-size: 1.5rem;
             color: var(--primary-color);
             text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+            background: linear-gradient(135deg, #6A0DAD, #1E90FF, #6A0DAD);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+            letter-spacing: 1.5px;
+            font-style: italic;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% {
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 100% center;
+            }
         }
 
         .sidebar a {
@@ -247,6 +431,133 @@
             background: rgba(106, 13, 173, 0.05);
             padding-left: 30px;
             color: var(--primary-color);
+        }
+
+        .sidebar-social {
+            padding: 20px 25px;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        body.dark-mode .sidebar-social {
+            border-top: 1px solid #444;
+        }
+
+        .sidebar-social h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-social-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: nowrap;
+        }
+
+        .sidebar-social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            flex-shrink: 0;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            padding-left: 0;
+        }
+
+        /* Responsive icon sizes */
+        @media (max-width: 768px) {
+            .sidebar-social-links a {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+            }
+            .sidebar-social-links a i {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar-social-links {
+                gap: 4px;
+            }
+            .sidebar-social-links a {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+            }
+            .sidebar-social-links a i {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .sidebar-social {
+                padding: 15px 20px;
+            }
+            .sidebar-social-links {
+                gap: 3px;
+            }
+            .sidebar-social-links a {
+                width: 34px;
+                height: 34px;
+                min-width: 34px;
+            }
+            .sidebar-social-links a i {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Instagram - Gradient */
+        .sidebar-social-links a.instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        /* YouTube - Red */
+        .sidebar-social-links a.youtube {
+            background: #FF0000;
+        }
+
+        /* X (Twitter) - Black */
+        .sidebar-social-links a.twitter-x {
+            background: #000000;
+        }
+
+        body.dark-mode .sidebar-social-links a.twitter-x {
+            background: #1DA1F2;
+        }
+
+        /* Facebook - Blue */
+        .sidebar-social-links a.facebook {
+            background: #1877F2;
+        }
+
+        /* LinkedIn - Blue */
+        .sidebar-social-links a.linkedin {
+            background: #0A66C2;
+        }
+
+        .sidebar-social-links a i {
+            font-size: 1.3rem;
         }
 
         .sidebar-overlay {
@@ -275,34 +586,35 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            background: rgba(20, 28, 70, 0.7);
+            background: rgba(26, 35, 126, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.3);
             z-index: 1000;
             justify-content: space-around;
-            padding: 0.5rem 0;
+            padding: 0.35rem 0;
+            height: 60px;
         }
 
         body.dark-mode .bottom-nav {
-            background: rgba(10, 10, 20, 0.7);
+             background: rgba(15, 15, 30, 0.95);
         }
 
         .bottom-nav .nav-link {
-            color: orange;
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
             padding: 0;
             flex: 1;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 500;
         }
 
@@ -311,35 +623,51 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 2px;
+            width: 32px;
+            height: 32px;
+            transition: all 0.3s ease;
+            margin-bottom: 3px;
             border-radius: 50%;
         }
 
         .bottom-nav .nav-link i {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             transition: all 0.3s ease;
             z-index: 2;
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .bottom-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .bottom-nav .nav-link.active {
+            color: #ffffff;
         }
 
         .bottom-nav .nav-link.active .icon-wrapper {
-            transform: translateY(-8px);
-            background: linear-gradient(145deg, #0052d4, #4364f7, #6fb1fc);
-            box-shadow: 0 0 20px 4px rgba(100, 150, 250, 0.6), 0 0 8px rgba(252, 246, 186, 0.5);
+            background: linear-gradient(145deg, #6A0DAD, #1E90FF);
+            box-shadow: 0 2px 10px rgba(106, 13, 173, 0.5);
         }
 
         .bottom-nav .nav-link.active i {
             color: white;
         }
 
+        .bottom-nav .nav-link:hover:not(.active) i {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
         /* Footer Styles */
         .footer {
-            background: var(--dark-color);
+            background: #2C3E50;
             color: white;
             padding: 60px 0 20px;
+        }
+
+        body.dark-mode .footer {
+            background: #1a1a1a;
+            color: #F8F9FA;
         }
 
         .footer h5 {
@@ -354,6 +682,11 @@
 
         .footer ul li {
             margin-bottom: 10px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        body.dark-mode .footer ul li {
+            color: rgba(248,249,250,0.9);
         }
 
         .footer ul li a {
@@ -362,9 +695,25 @@
             transition: all 0.3s ease;
         }
 
+        body.dark-mode .footer ul li a {
+            color: rgba(248,249,250,0.7);
+        }
+
         .footer ul li a:hover {
             color: white;
             padding-left: 5px;
+        }
+
+        body.dark-mode .footer ul li a:hover {
+            color: #F8F9FA;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        body.dark-mode .footer p {
+            color: rgba(248,249,250,0.8);
         }
 
         .social-links a {
@@ -381,9 +730,15 @@
             text-decoration: none;
         }
 
+        body.dark-mode .social-links a {
+            background: rgba(248,249,250,0.1);
+            color: #F8F9FA;
+        }
+
         .social-links a:hover {
             background: var(--accent-color);
             transform: translateY(-3px);
+            color: white;
         }
 
         .footer-bottom {
@@ -391,7 +746,12 @@
             margin-top: 40px;
             padding-top: 20px;
             text-align: center;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.7);
+        }
+
+        body.dark-mode .footer-bottom {
+            border-top: 1px solid rgba(248,249,250,0.1);
+            color: rgba(248,249,250,0.7);
         }
 
         /* Hero Section */
@@ -552,11 +912,86 @@
             .footer {
                 display: none;
             }
+
+            /* Mobile/Tablet Header Layout */
+            .navbar .container {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .navbar-left {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                position: absolute;
+                left: 15px;
+                flex-direction: row;
+                z-index: 20;
+            }
+
+            .explore-icon {
+                flex-shrink: 0;
+            }
+
+            /* Hide desktop brand name on mobile */
+            .brand-name-desktop {
+                display: none !important;
+            }
+
+            /* Show logo ONLY on the left - fixed size and position */
+            .navbar-left .brand-logo {
+                width: 40px !important;
+                height: 40px !important;
+                margin: 0 !important;
+                display: block !important;
+                flex-shrink: 0;
+            }
+
+            /* Hide the navbar-brand anchor and its text */
+            .navbar-left .navbar-brand {
+                display: none !important;
+            }
+
+            /* Show centered "ADS" text separately - completely independent */
+            .navbar .container::after {
+                content: 'ADS';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+                font-size: 1.5rem;
+                color: #1A237E;
+                z-index: 5;
+                pointer-events: none;
+            }
+
+            body.dark-mode .navbar .container::after {
+                color: #F8F9FA;
+            }
+
+            #mobile-theme-toggle {
+                position: absolute;
+                right: 15px;
+            }
         }
 
         @media (min-width: 1025px) {
             #desktop-theme-toggle .theme-toggle {
                 display: flex;
+            }
+            /* Disable sidebar on desktop/laptop */
+            .sidebar {
+                display: none !important;
+            }
+            .sidebar-overlay {
+                display: none !important;
+            }
+            .explore-icon {
+                display: none !important;
             }
         }
 
@@ -590,6 +1025,39 @@
                 margin-right: 8px;
             }
         }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 240px;
+                left: -240px;
+            }
+        }
+
+        @media (max-width: 327px) {
+            .sidebar {
+                width: 220px;
+                left: -220px;
+            }
+        }
+
+        @media (max-width: 315px) {
+            .brand-name {
+                display: inline;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            .brand-logo {
+                height: 24px;
+                margin-right: 6px;
+            }
+            .explore-icon {
+                font-size: 1.1rem;
+                margin-right: 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -600,9 +1068,12 @@
             <a id="explore-icon" class="explore-icon">
                 <i class="bi bi-list"></i>
             </a>
-            <a class="navbar-brand" href="home.html">
-                <img src="images/ads.png" alt="Ananta Digi Service Logo" class="brand-logo">
-                <span class="brand-name">Ananta Digi Service</span>
+            <a href="/" style="display: inline-flex; align-items: center; text-decoration: none; cursor: pointer;">
+                <img src="images/ads.png" alt="ADS Logo" class="brand-logo">
+                <span class="brand-name-desktop">Ananta Digi Service</span>
+            </a>
+            <a class="navbar-brand" href="/" style="display: none;">
+                <span class="brand-name">ADS</span>
             </a>
         </div>
 
@@ -640,10 +1111,36 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <div class="sidebar-header">
-        <span class="brand-name-sidebar">Ananta Digi Service</span>
+        <div class="sidebar-close" id="sidebar-close-btn">
+            <i class="bi bi-arrow-left"></i>
+        </div>
+        <img src="images/ads.png" alt="ADS Logo" class="sidebar-logo">
+        <span class="brand-name-sidebar">ADS</span>
     </div>
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms & Conditions</a>
+
+    <!-- Social Media Icons -->
+    <div class="sidebar-social">
+        <h6>Connect With Us</h6>
+        <div class="sidebar-social-links">
+            <a href="https://www.instagram.com/anantadigiservice/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://youtube.com/@anantadigiservice?si=9gI3GLYTkpllkhou" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="youtube">
+                <i class="bi bi-youtube"></i>
+            </a>
+            <a href="https://x.com/ananta_ads" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="twitter-x">
+                <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="facebook">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="linkedin">
+                <i class="bi bi-linkedin"></i>
+            </a>
+        </div>
+    </div>
 </div>
 <div class="sidebar-overlay"></div>
 
@@ -677,7 +1174,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Phone Number *</label>
-                                    <input type="tel" name="phone" class="form-control" placeholder="+91 7659872496" required>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+91 9933513999" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Service Interested In</label>
@@ -714,7 +1211,7 @@
                             <i class="bi bi-geo-alt-fill"></i>
                             <div>
                                 <strong>Address</strong><br>
-                                ANANTAPUR, INDIA
+                                Anantapur, Jesus Nagar,2nd floor above More Super Mart, Anantapur, Andhra Pradesh 515001
                             </div>
                         </div>
 
@@ -722,7 +1219,7 @@
                             <i class="bi bi-telephone-fill"></i>
                             <div>
                                 <strong>Phone</strong><br>
-                                +91 7659872496
+                                +91 9933513999
                             </div>
                         </div>
 
@@ -730,7 +1227,7 @@
                             <i class="bi bi-envelope-fill"></i>
                             <div>
                                 <strong>Email</strong><br>
-                                ANANTADIGISERVICE@GMAIL.COM
+                                anantadigiservice@gmail.com
                             </div>
                         </div>
 
@@ -743,10 +1240,10 @@
                         </div>
 
                         <div class="mt-4">
-                            <button class="btn btn-whatsapp w-100 mb-2" onclick="window.open('https://wa.me/917659872496', '_blank')">
+                            <button class="btn btn-whatsapp w-100 mb-2" onclick="window.open('https://wa.me/919933513999', '_blank')">
                                 <i class="bi bi-whatsapp"></i> Chat on WhatsApp
                             </button>
-                            <button class="btn btn-primary-custom w-100" onclick="window.location.href='tel:+917659872496'">
+                            <button class="btn btn-primary-custom w-100" onclick="window.location.href='tel:+919933513999'">
                                 <i class="bi bi-telephone-fill"></i> Call Now
                             </button>
                         </div>
@@ -757,12 +1254,13 @@
             <!-- Map -->
             <div class="map-container">
                 <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6432234!2d78.486671!3d17.385044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDIzJzA2LjIiTiA3OMKwMjknMTIuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229.2988605272761!2d77.59854376316073!3d14.669588246750147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xcb4a4c760feae9b%3A0x9cf9d8a9d1a4ef50!2sAnanta%20Realty!5e1!3m2!1sen!2sin!4v1761899267761!5m2!1sen!2sin"
                         width="100%"
                         height="400"
                         style="border:0;"
                         allowfullscreen=""
-                        loading="lazy">
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
         </div>
@@ -807,9 +1305,9 @@
                 <div class="col-lg-3 mb-4">
                     <h5>Contact Info</h5>
                     <ul>
-                        <li><i class="bi bi-geo-alt-fill"></i> ANANTAPUR, INDIA</li>
-                        <li><i class="bi bi-telephone-fill"></i> +91 7659872496</li>
-                        <li><i class="bi bi-envelope-fill"></i> ANANTADIGISERVICE@GMAIL.COM</li>
+                        <li><i class="bi bi-geo-alt-fill"></i>Anantapur, Jesus Nagar,2nd floor above More Super Mart, Anantapur, Andhra Pradesh 515001</li>
+                        <li><i class="bi bi-telephone-fill"></i> +91 9933513999</li>
+                        <li><i class="bi bi-envelope-fill"></i> anantadigiservice@gmail.com</li>
                         <li><i class="bi bi-clock-fill"></i> Mon - Sat: 9AM - 6PM</li>
                     </ul>
                 </div>
@@ -910,6 +1408,7 @@
         const sidebar = document.querySelector('.sidebar');
         const sidebarOverlay = document.querySelector('.sidebar-overlay');
         const exploreIcon = document.getElementById('explore-icon');
+        const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
 
         function toggleSidebar() {
             sidebar.classList.toggle('active');
@@ -923,6 +1422,12 @@
         });
 
         sidebarOverlay.addEventListener('click', function() {
+            toggleSidebar();
+        });
+
+        // Close sidebar when close button is clicked
+        sidebarCloseBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
             toggleSidebar();
         });
 

@@ -293,6 +293,7 @@ public class ApiController {
         }
     }
 
+
     // JSON API endpoint for contact form submissions
     @PostMapping("/contact")
     public ResponseEntity<Map<String, Object>> submitContactJson(@RequestBody Map<String, String> contactData) {

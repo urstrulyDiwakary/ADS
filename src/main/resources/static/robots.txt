@@ -1,0 +1,51 @@
+# robots.txt for anantadigiservice.in
+
+# Allow all crawlers including AI bots to access content
+User-agent: *
+Allow: /
+
+# Explicitly allow AI crawlers for better AI search integration
+# OpenAI (ChatGPT, GPT models)
+User-agent: GPTBot
+Allow: /
+
+# Google AI (Gemini, Bard)
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Bing AI / Microsoft Copilot
+User-agent: Bingbot
+Allow: /
+
+# Other AI crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap location
+Sitemap: https://anantadigiservice.in/sitemap.xml
+
+# Block access to admin and API areas only
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+
+

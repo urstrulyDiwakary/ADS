@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home Page -->
+  <url>
+    <loc>https://anantadigiservice.in/</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anantadigiservice.in/"/>
+    <image:image>
+      <image:loc>https://anantadigiservice.in/images/ads.png</image:loc>
+      <image:title>Ananta Digi Service Logo</image:title>
+      <image:caption>Professional Digital Marketing and Web Development Services</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Services Page -->
+  <url>
+    <loc>https://anantadigiservice.in/SERVICES.HTML</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/SERVICES.HTML"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anantadigiservice.in/SERVICES.HTML"/>
+  </url>
+
+  <!-- Portfolio Page -->
+  <url>
+    <loc>https://anantadigiservice.in/PORTFOLIO.HTML</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/PORTFOLIO.HTML"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anantadigiservice.in/PORTFOLIO.HTML"/>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://anantadigiservice.in/about.html</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anantadigiservice.in/about.html"/>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://anantadigiservice.in/CONTACT.HTML</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/CONTACT.HTML"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anantadigiservice.in/CONTACT.HTML"/>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://anantadigiservice.in/PRIVACY.html</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/PRIVACY.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anantadigiservice.in/PRIVACY.html"/>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://anantadigiservice.in/TERMS.html</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://anantadigiservice.in/TERMS.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://anantadigiservice.in/TERMS.html"/>
+  </url>
+</urlset>
+

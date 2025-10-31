@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -35,9 +36,8 @@ public class AdminService implements UserDetailsService {
                 new SimpleGrantedAuthority("ROLE_ADMIN")
         );
 
-        // Update last login time
-        admin.setLastLogin(LocalDateTime.now());
-        adminRepository.save(admin);
+        // Don't update lastLogin here - it can interfere with authentication
+        // Update it after successful login in the controller if needed
 
         return new User(admin.getEmail(), admin.getPassword(), admin.getEnabled(), true, true, true, authorities);
     }
@@ -72,8 +72,17 @@ public class AdminService implements UserDetailsService {
         return adminRepository.findAll();
     }
 
+    @Transactional
     public Admin updateAdmin(Admin admin) {
         return adminRepository.save(admin);
+    }
+
+    @Transactional
+    public void updateLastLogin(String email) {
+        adminRepository.findByEmail(email).ifPresent(admin -> {
+            admin.setLastLogin(LocalDateTime.now());
+            adminRepository.save(admin);
+        });
     }
 
     public void deleteAdmin(Long id) {
@@ -116,7 +125,10 @@ public class AdminService implements UserDetailsService {
     public Admin createAdminFull(Admin admin) {
         // Encode password before saving
         admin.setPassword(passwordEncoder.encode(admin.getPassword()));
-        admin.setCreatedDate(LocalDateTime.now());
+        // Ensure createdDate is set (should be set by constructor, but double-check)
+        if (admin.getCreatedDate() == null) {
+            admin.setCreatedDate(LocalDateTime.now());
+        }
         return adminRepository.save(admin);
     }
 

@@ -12,6 +12,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -20,11 +22,13 @@ import java.util.Map;
 @Controller
 public class PublicController {
 
+    private static final Logger logger = LoggerFactory.getLogger(PublicController.class);
+
     @Autowired
     private ContactSubmissionRepository contactSubmissionRepository;
 
-    // Home page - serves HOME.html directly
-    @GetMapping("/")
+    // Home page mappings - handle both with and without .html extension
+    @GetMapping({"/", "/home", "/home.html"})
     @ResponseBody
     public ResponseEntity<Resource> home() {
         try {
@@ -37,14 +41,8 @@ public class PublicController {
         }
     }
 
-    @GetMapping("/home")
-    @ResponseBody
-    public ResponseEntity<Resource> homeAlias() {
-        return home();
-    }
-
-    // About page
-    @GetMapping("/about")
+    // About page mappings
+    @GetMapping({"/about", "/about.html"})
     @ResponseBody
     public ResponseEntity<Resource> about() {
         try {
@@ -57,8 +55,8 @@ public class PublicController {
         }
     }
 
-    // Contact page
-    @GetMapping("/contact")
+    // Contact page mappings
+    @GetMapping({"/contact", "/contact.html"})
     @ResponseBody
     public ResponseEntity<Resource> contact() {
         try {
@@ -71,8 +69,8 @@ public class PublicController {
         }
     }
 
-    // Services page
-    @GetMapping("/services")
+    // Services page mappings
+    @GetMapping({"/services", "/services.html"})
     @ResponseBody
     public ResponseEntity<Resource> services() {
         try {
@@ -85,8 +83,8 @@ public class PublicController {
         }
     }
 
-    // Portfolio page
-    @GetMapping("/portfolio")
+    // Portfolio page mappings
+    @GetMapping({"/portfolio", "/portfolio.html"})
     @ResponseBody
     public ResponseEntity<Resource> portfolio() {
         try {
@@ -99,8 +97,8 @@ public class PublicController {
         }
     }
 
-    // Jobs page
-    @GetMapping("/jobs")
+    // Jobs page mappings
+    @GetMapping({"/jobs", "/jobs.html"})
     @ResponseBody
     public ResponseEntity<Resource> jobs() {
         try {
@@ -113,8 +111,8 @@ public class PublicController {
         }
     }
 
-    // Privacy page
-    @GetMapping("/privacy")
+    // Privacy page mappings
+    @GetMapping({"/privacy", "/privacy.html"})
     @ResponseBody
     public ResponseEntity<Resource> privacy() {
         try {
@@ -127,8 +125,8 @@ public class PublicController {
         }
     }
 
-    // Terms page
-    @GetMapping("/terms")
+    // Terms page mappings
+    @GetMapping({"/terms", "/terms.html"})
     @ResponseBody
     public ResponseEntity<Resource> terms() {
         try {
@@ -154,22 +152,39 @@ public class PublicController {
         Map<String, Object> response = new HashMap<>();
 
         try {
+            logger.info("Received contact form submission from: {} ({})", name, email);
+
+            // Validate inputs
+            if (name == null || name.trim().isEmpty()) {
+                throw new IllegalArgumentException("Name is required");
+            }
+            if (email == null || email.trim().isEmpty()) {
+                throw new IllegalArgumentException("Email is required");
+            }
+
             ContactSubmission submission = new ContactSubmission();
-            submission.setName(name);
-            submission.setEmail(email);
-            submission.setPhone(phone);
-            submission.setService(service);
-            submission.setMessage(message);
+            submission.setName(name.trim());
+            submission.setEmail(email.trim());
+            submission.setPhone(phone != null ? phone.trim() : "");
+            submission.setService(service != null ? service.trim() : "General Inquiry");
+            submission.setMessage(message != null ? message.trim() : "");
             submission.setDate(LocalDateTime.now());
 
             contactSubmissionRepository.save(submission);
 
+            logger.info("Contact submission saved successfully with ID: {}", submission.getId());
+
             response.put("success", true);
             response.put("message", "Thank you for your message! We'll get back to you soon.");
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
+            logger.warn("Validation error in contact form: {}", e.getMessage());
             response.put("success", false);
-            response.put("message", "Sorry, there was an error processing your request. Please try again.");
+            response.put("message", e.getMessage());
+        } catch (Exception e) {
+            logger.error("Error processing contact form submission", e);
+            response.put("success", false);
+            response.put("message", "Sorry, there was an error processing your request. Please try again or contact us directly.");
         }
 
         return response;

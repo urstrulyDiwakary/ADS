@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - ADS Admin Panel</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/ads.png">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
@@ -739,15 +743,16 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-left">
-            <img src="/images/ads.png" alt="ADS Logo" class="brand-logo">
-            <div class="brand-name">ADS</div>
+            <a href="/" style="display: inline-flex; align-items: center; text-decoration: none; cursor: pointer;">
+                <img src="/images/ads.png" alt="ADS Logo" class="brand-logo">
+                <div class="brand-name">ADS</div>
+            </a>
         </div>
         <h1>Admin Dashboard</h1>
         <div class="nav-links">
             <a href="/admin/dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
             <a href="/admin/submissions"><i class="fas fa-envelope"></i> Submissions</a>
             <form method="post" action="/admin/logout" style="display: inline; margin: 0;">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <button type="submit" style="color: white; text-decoration: none; padding: 10px 20px; border-radius: var(--border-radius); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: inherit; font-size: inherit;">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
@@ -1023,6 +1028,50 @@
     </div>
 
     <script>
+        // ============================================
+        // CSRF Token Utility Functions
+        // ============================================
+        function getCsrfToken() {
+            // Try to get from cookie first (XSRF-TOKEN)
+            const cookieValue = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('XSRF-TOKEN='));
+
+            if (cookieValue) {
+                return decodeURIComponent(cookieValue.split('=')[1]);
+            }
+
+            // Fallback: try to get from meta tag
+            const metaTag = document.querySelector('meta[name="_csrf"]');
+            if (metaTag) {
+                return metaTag.getAttribute('content');
+            }
+
+            console.warn('CSRF token not found');
+            return null;
+        }
+
+        function getCsrfHeader() {
+            const headerName = document.querySelector('meta[name="_csrf_header"]');
+            return headerName ? headerName.getAttribute('content') : 'X-XSRF-TOKEN';
+        }
+
+        function getAuthHeaders() {
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+
+            const csrfToken = getCsrfToken();
+            if (csrfToken) {
+                headers[getCsrfHeader()] = csrfToken;
+            }
+
+            return headers;
+        }
+
+        // ============================================
+        // Dashboard Variables
+        // ============================================
         let serviceChart, distributionChart;
         let allAdmins = [];
         let isEditMode = false;
@@ -1037,7 +1086,9 @@
         // Load dashboard statistics
         async function loadDashboardData() {
             try {
-                const response = await fetch('/api/contact/summary');
+                const response = await fetch('/api/contact/summary', {
+                    headers: getAuthHeaders()
+                });
                 if (response.ok) {
                     const data = await response.json();
                     updateStatistics(data);
@@ -1069,7 +1120,9 @@
         // Load recent submissions
         async function loadRecentSubmissions() {
             try {
-                const response = await fetch('/api/contact/submissions');
+                const response = await fetch('/api/contact/submissions', {
+                    headers: getAuthHeaders()
+                });
                 if (response.ok) {
                     const submissions = await response.json();
                     displayRecentSubmissions(submissions.slice(0, 5)); // Show only last 5
@@ -1234,7 +1287,9 @@
 
         // Export data functionality
         function exportData() {
-            fetch('/api/contact/submissions')
+            fetch('/api/contact/submissions', {
+                headers: getAuthHeaders()
+            })
                 .then(response => response.json())
                 .then(data => {
                     const csv = convertToCSV(data);
@@ -1332,15 +1387,35 @@
             return text ? text.replace(/[&<>"']/g, function(m) { return map[m]; }) : '';
         }
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
+        function formatDate(dateInput) {
+            if (!dateInput) return '';  // Return empty string for null/undefined dates
+
+            let date;
+
+            // Handle LocalDateTime array format from Java [year, month, day, hour, minute, second, nanosecond]
+            if (Array.isArray(dateInput)) {
+                const [year, month, day, hour = 0, minute = 0, second = 0] = dateInput;
+                // JavaScript months are 0-indexed, Java months are 1-indexed
+                date = new Date(year, month - 1, day, hour, minute, second);
+            } else {
+                // Handle string format
+                date = new Date(dateInput);
+            }
+
+            // Check if date is valid
+            if (isNaN(date.getTime())) {
+                return '';  // Return empty string for invalid dates
+            }
+
             return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
         }
 
         // Load admins data
         async function loadAdmins() {
             try {
-                const response = await fetch('/api/admins');
+                const response = await fetch('/api/admins', {
+                    headers: getAuthHeaders()
+                });
                 if (response.ok) {
                     const admins = await response.json();
                     allAdmins = admins;
@@ -1388,7 +1463,7 @@
                             <span class="toggle-slider"></span>
                         </label>
                     </td>
-                    <td>${formatDate(admin.createdAt)}</td>
+                    <td>${formatDate(admin.createdDate)}</td>
                     <td>${admin.lastLogin ? formatDate(admin.lastLogin) : 'Never'}</td>
                     <td>
                         <button class="action-btn edit" onclick="openEditAdminModal(${admin.id})">
@@ -1490,9 +1565,7 @@
 
                 const response = await fetch(url, {
                     method: method,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: getAuthHeaders(),
                     body: JSON.stringify(adminData)
                 });
 
@@ -1516,9 +1589,7 @@
             try {
                 const response = await fetch(`/api/admins/${adminId}/toggle-status`, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                    headers: getAuthHeaders()
                 });
 
                 const result = await response.json();
@@ -1561,9 +1632,7 @@
             try {
                 const response = await fetch(`/api/admins/${adminId}/password`, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: getAuthHeaders(),
                     body: JSON.stringify({ newPassword: newPassword })
                 });
 
@@ -1593,9 +1662,7 @@
             try {
                 const response = await fetch(`/api/admins/${adminId}`, {
                     method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                    headers: getAuthHeaders()
                 });
 
                 const result = await response.json();
@@ -1623,6 +1690,7 @@
             document.getElementById('passwordModal').style.display = 'none';
             document.getElementById('passwordForm').reset();
         }
+
 
         // Toggle password visibility
         function togglePasswordVisibility(inputId, iconElement) {
