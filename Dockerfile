@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.9-eclipse-temurin-17 AS builder
+FROM maven:3.9-eclipse-temurin-23 AS builder
 WORKDIR /app
 
 # Copy dependency files first for better caching
@@ -13,7 +13,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests -Pproduction
 
 # Runtime stage
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:23-jre-jammy
 WORKDIR /app
 
 # Install curl for health checks and create non-root user

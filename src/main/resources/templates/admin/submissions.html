@@ -82,6 +82,7 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 12px;
         }
 
@@ -95,9 +96,12 @@
             border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s ease;
             font-weight: 500;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -107,6 +111,37 @@
         }
 
         .nav-links a i {
+            font-size: 16px;
+        }
+
+        .nav-links button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: nowrap;
+        }
+
+        .nav-links button:hover {
+            background: rgba(239, 68, 68, 0.9);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(239, 68, 68, 1);
+        }
+
+        .nav-links button i {
             font-size: 16px;
         }
 
@@ -566,8 +601,9 @@
         <div class="nav-links">
             <a href="/admin/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
             <a href="/admin/submissions" class="active"><i class="fas fa-envelope"></i> Submissions</a>
+            <a href="https://anantadigiservice.in" target="_blank"><i class="fas fa-globe"></i> View Website</a>
             <form method="post" action="/admin/logout" style="display: inline; margin: 0;">
-                <button type="submit" style="color: white; text-decoration: none; padding: 10px 20px; border-radius: var(--border-radius); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: inherit; font-size: 14px;">
+                <button type="submit">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </form>
