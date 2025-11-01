@@ -5,7 +5,7 @@
 set -e  # Exit on any error
 
 echo "════════════════════════════════════════════════════════════"
-echo "  🚀 ADS Admin System - Hostinger VPS Deployment"
+echo "  🚀 ADS Service - Hostinger VPS Deployment"
 echo "════════════════════════════════════════════════════════════"
 echo ""
 
@@ -151,7 +151,7 @@ ADMIN_PASSWORD=$(openssl rand -base64 24)
 
 print_info "Creating environment configuration..."
 cat > $ENV_FILE << EOF
-# ADS Admin System - Production Environment Configuration
+# ADS Service - Production Environment Configuration
 # Auto-generated on $(date)
 
 # Database Configuration
@@ -168,7 +168,7 @@ ADMIN_DEFAULT_USERNAME=admin
 ADMIN_DEFAULT_FULLNAME=System Administrator
 
 # Application Configuration
-PORT=8080
+PORT=8089
 SPRING_PROFILES_ACTIVE=prod
 
 # Security Configuration
@@ -212,7 +212,7 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 print_info "Creating systemd service..."
 cat > $SYSTEMD_SERVICE << EOF
 [Unit]
-Description=ADS Admin System
+Description=ADS Service
 After=network.target postgresql.service
 Wants=postgresql.service
 

@@ -11,7 +11,7 @@
 	<groupId>com.ads</groupId>
 	<artifactId>ads-admin</artifactId>
 	<version>1.0.0</version>
-	<name>ADS Admin System</name>
+	<name>ADS Service</name>
 	<description>Admin Dashboard for ADS Website</description>
 	<properties>
 		<java.version>23</java.version>

@@ -32,10 +32,10 @@ USER appuser
 
 # Health check using actuator endpoint
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-  CMD curl -f http://localhost:8080/actuator/health || exit 1
+  CMD curl -f http://localhost:8089/actuator/health || exit 1
 
 # Expose port
-EXPOSE 8080
+EXPOSE 8089
 
 # JVM optimizations for container and production
 ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC -XX:+DisableExplicitGC -Djava.security.egd=file:/dev/./urandom"

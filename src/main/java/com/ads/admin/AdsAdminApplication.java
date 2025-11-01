@@ -25,7 +25,7 @@ public class AdsAdminApplication {
 
     public static void main(String[] args) {
         try {
-            logger.info("Starting ADS Admin Application...");
+            logger.info("Starting ADS Service...");
             SpringApplication.run(AdsAdminApplication.class, args);
         } catch (Exception e) {
             logger.error("Failed to start application", e);
@@ -56,7 +56,7 @@ public class AdsAdminApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void onApplicationReady() {
-        String port = environment.getProperty("server.port", "8080");
+        String port = environment.getProperty("server.port", "8089");
         String profile = String.join(",", environment.getActiveProfiles());
         if (profile.isEmpty()) {
             profile = "default";
@@ -66,10 +66,10 @@ public class AdsAdminApplication {
         testDatabaseConnection();
 
         logger.info("=================================================");
-        logger.info("🚀 ADS Admin Application Started Successfully!");
+        logger.info("🚀 ADS Service Started Successfully!");
         logger.info("🌐 Server running on: http://localhost:{}", port);
         logger.info("📊 Active Profile: {}", profile);
-        logger.info("🔐 Admin Panel: http://localhost:{}/admin/login", port);
+        logger.info("🔐 Admin Dashboard: http://localhost:{}/admin/login", port);
         logger.info("🏠 Home Page: http://localhost:{}/", port);
         logger.info("=================================================");
     }
