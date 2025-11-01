@@ -1,8 +1,8 @@
-package com.ads.admin.controller;
+package com.ads.service.controller;
 
-import com.ads.admin.model.Admin;
-import com.ads.admin.service.ContactSubmissionService;
-import com.ads.admin.service.AdminService;
+import com.ads.service.model.Admin;
+import com.ads.service.service.ContactSubmissionService;
+import com.ads.service.service.AdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

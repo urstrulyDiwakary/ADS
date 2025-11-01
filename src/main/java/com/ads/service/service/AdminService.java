@@ -1,7 +1,7 @@
-package com.ads.admin.service;
+package com.ads.service.service;
 
-import com.ads.admin.model.Admin;
-import com.ads.admin.repository.AdminRepository;
+import com.ads.service.model.Admin;
+import com.ads.service.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

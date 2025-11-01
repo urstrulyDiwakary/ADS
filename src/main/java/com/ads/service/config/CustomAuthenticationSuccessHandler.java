@@ -1,6 +1,6 @@
-package com.ads.admin.config;
+package com.ads.service.config;
 
-import com.ads.admin.service.AdminService;
+import com.ads.service.service.AdminService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

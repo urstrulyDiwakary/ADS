@@ -1,6 +1,6 @@
-package com.ads.admin.repository;
+package com.ads.service.repository;
 
-import com.ads.admin.model.Admin;
+import com.ads.service.model.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

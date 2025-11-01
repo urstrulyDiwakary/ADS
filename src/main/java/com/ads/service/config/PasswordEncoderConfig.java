@@ -1,4 +1,4 @@
-package com.ads.admin.config;
+package com.ads.service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

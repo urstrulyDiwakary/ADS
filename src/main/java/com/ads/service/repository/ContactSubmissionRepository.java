@@ -1,6 +1,6 @@
-package com.ads.admin.repository;
+package com.ads.service.repository;
 
-import com.ads.admin.model.ContactSubmission;
+import com.ads.service.model.ContactSubmission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,9 +1,9 @@
-package com.ads.admin.config;
+package com.ads.service.config;
 
-import com.ads.admin.model.Admin;
-import com.ads.admin.model.ContactSubmission;
-import com.ads.admin.repository.AdminRepository;
-import com.ads.admin.repository.ContactSubmissionRepository;
+import com.ads.service.model.Admin;
+import com.ads.service.model.ContactSubmission;
+import com.ads.service.repository.AdminRepository;
+import com.ads.service.repository.ContactSubmissionRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

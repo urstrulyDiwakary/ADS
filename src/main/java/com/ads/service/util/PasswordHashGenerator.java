@@ -1,4 +1,4 @@
-package com.ads.admin.util;
+package com.ads.service.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

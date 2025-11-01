@@ -1,4 +1,4 @@
-package com.ads.admin.config;
+package com.ads.service.config;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

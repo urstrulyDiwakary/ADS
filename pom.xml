@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.ads</groupId>
-	<artifactId>ads-admin</artifactId>
+	<artifactId>ads-service</artifactId>
 	<version>1.0.0</version>
 	<name>ADS Service</name>
-	<description>Admin Dashboard for ADS Website</description>
+	<description>ADS Service Application</description>
 	<properties>
 		<java.version>23</java.version>
 		<maven.compiler.source>23</maven.compiler.source>

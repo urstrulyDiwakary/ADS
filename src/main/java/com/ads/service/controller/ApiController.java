@@ -1,9 +1,9 @@
-package com.ads.admin.controller;
+package com.ads.service.controller;
 
-import com.ads.admin.model.ContactSubmission;
-import com.ads.admin.model.Admin;
-import com.ads.admin.service.ContactSubmissionService;
-import com.ads.admin.service.AdminService;
+import com.ads.service.model.ContactSubmission;
+import com.ads.service.model.Admin;
+import com.ads.service.service.ContactSubmissionService;
+import com.ads.service.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

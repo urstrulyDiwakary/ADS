@@ -1,7 +1,7 @@
-package com.ads.admin.service;
+package com.ads.service.service;
 
-import com.ads.admin.model.ContactSubmission;
-import com.ads.admin.repository.ContactSubmissionRepository;
+import com.ads.service.model.ContactSubmission;
+import com.ads.service.repository.ContactSubmissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

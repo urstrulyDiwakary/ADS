@@ -1,4 +1,4 @@
-package com.ads.admin;
+package com.ads.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +13,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 @SpringBootApplication
-public class AdsAdminApplication {
+public class AdsService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AdsAdminApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdsService.class);
 
     @Autowired
     private Environment environment;
@@ -26,7 +26,7 @@ public class AdsAdminApplication {
     public static void main(String[] args) {
         try {
             logger.info("Starting ADS Service...");
-            SpringApplication.run(AdsAdminApplication.class, args);
+            SpringApplication.run(AdsService.class, args);
         } catch (Exception e) {
             logger.error("Failed to start application", e);
             System.err.println("=================================================");
